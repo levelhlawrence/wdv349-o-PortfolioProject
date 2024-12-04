@@ -1,14 +1,12 @@
 # Tech Stack
 
-Fill out the headings below with your Tech Stack information. List the tools and technology you would like to use for your final project. Explain your reasoning for this as well. For example, how does the proposed tool or technology provide value to your overall portfolio of work?
-
 ## Application Design
 
-I plan to use Figma for the design of the application. Figma provides a great interface for creating interactive prototypes, allowing me to refine the user experience before development. I will also be using Material-UI for UI components.
+I plan to use Figma for the design of the application. Figma provides a great interface for creating interactive prototypes, allowing me to refine the user experience before development. For the UI, I will be using Tailwind CSS for utility-first styling and ShadCN for accessible and reusable components. This combination ensures both a highly customizable and visually appealing design system.
 
 ## Front End Framework
 
-I will use React for the front-end development. React's component-based structure allows me to build in a scalable way. I plan to use TailwindCSS for styling. ESLint style guide to maintain code consistency and I may also use TypeScript (TBD).
+I will use React for the front-end development. React's component-based structure allows me to build in a scalable way. Tailwind CSS will handle styling, while ShadCN will provide prebuilt UI components that align well with modern design principles. I will also use ESLint for maintaining code consistency and may include TypeScript for type safety (TBD).
 
 ## State Management
 
@@ -16,12 +14,12 @@ I will use React's useContext and Context API for state management. This provide
 
 ## Node
 
-I do not plan to use Node.js in this project, as the back-end API will be built using Django REST Framework. Django provides a robust and efficient framework for back-end development, eliminating the need for a Node.js setup.
+I will use Node.js for the back-end development. Node.js provides a fast, scalable, and efficient runtime environment for building server-side applications.
 
 ## Express
 
-Instead of Express, I will use Django REST Framework (DRF) to handle the API layer. DRF offers built-in functionality for creating RESTful APIs, including serialization, authentication, and routing, making it an excellent alternative to Express.
+I will use Express to handle the API layer. Express is a lightweight and flexible framework for building RESTful APIs. Its simplicity and rich ecosystem make it an excellent choice for rapid backend development.
 
-## SQL/Postgres/Sequelize
+## Database (MongoDB)
 
-I plan to use PostgreSQL as the relational database solution for this project. Django's built-in ORM will replace Sequelize to handle migrations, models, and seeding. The Django ORM provides a seamless way to interact with PostgreSQL, ensuring efficient CRUD operations, validation, and relational model management.
+I plan to use MongoDB as the database solution for this project. MongoDB is a NoSQL database that allows for flexible, schema less data storage, making it an ideal choice for handling unstructured or semi-structured data. (A possible switch to postgres down the line)

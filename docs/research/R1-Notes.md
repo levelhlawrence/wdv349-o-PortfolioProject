@@ -12,58 +12,68 @@ This document contains general notes related to research and planning for a main
 
 <br>
 
-## Sub-Topic 1 - Key Features of a Maintenance Management System
+## Key Features of a Maintenance Management System
 
-Brief overview of research.
+- ### Task Scheduling:
 
-- Task Scheduling: Automate task assignments based on priority, resource availability, and deadlines.
+  - Automate task assignments based on priority, resource availability, and deadlines.
 
-- Asset Tracking: Maintain an up-to-date log of equipment and assets under management.
+- ### Asset Tracking:
 
-- Preventive Maintenance: Implement alerts and schedules to minimize equipment downtime.
+  - Maintain an up to date log of equipment and assets under management.
 
-<br>
-
-## Sub-Topic 2 - Technology Stack for Implementation
-
-Brief overview of research.
-
-- Back-End: Node.js with Express.js for API development to handle task creation, updates, and notifications.
-
-- Front-End: React for user interfaces, offering interactive dashboards for tracking and scheduling.
-
-- Database: PostgreSQL for relational data storage, enabling efficient management of tasks, assets, and users.
+- ### Preventive Maintenance:
+  - Implement alerts and schedules to minimize equipment downtime.
 
 <br>
 
-## Sub-Topic 3 - Design Considerations
+## Technology Stack for Implementation
 
-Brief overview of research.
+- ### Back-End:
 
-- User Experience: Employ Material-UI for responsive and visually appealing designs.
+  - Node.js with Express.js for API development to handle task creation, updates, and notifications.
 
-- Role-Based Access: Include user roles (e.g., admin, technician) with customized access to features.
+- ### Front-End:
 
-- Mobile Accessibility: Ensure the application works seamlessly on mobile devices for field technicians.
+  - React for user interfaces, offering interactive dashboards for tracking and scheduling.
+
+- ### Database:
+  - MongoDB for non-relational data storage. (May switch to postgres at a later date).
+
+<br>
+
+## Design Considerations
+
+- ### User Experience:
+
+  - Use Shadcn combined with Tailwind CSS for responsive and visually appealing designs.
+
+- ### Role-Based Access:
+
+  - Include user roles (e.g., admin, technician) with customized access to features.
+
+- ### Mobile Accessibility:
+  - Ensure the application works seamlessly on mobile devices for field technicians.
 
 <br>
 
 ## Reference Links
 
-Use this section to highlight your own independent research. Replace the example references below with your own links and recommended resources. For example...
+Below is a list of some of the resources I used.
 
-**Resource 1: Title**  
-[Name of Site or Article Here](https://www.someaddress.com/full/url/): Here's what I learned about...
+**Development of CMMS**
 
-**Resource 2: Title**  
-[Name of Site or Article Here](https://www.someaddress.com/full/url/): This site showed me how to...
-
-**Resource 3: Title**  
-[Name of Site or Article Here](https://www.someaddress.com/full/url/): This article explains that...
+[Development of CMMS](https://buildops.com/resources/development-of-cmms/): What I've learned is that developing a Computerized Maintenance Management System (CMMS) involves leveraging programming languages, specialized hardware, and secure IT infrastructure. Engineers and software architects are crucial for integrating, testing, and deploying the system, while simulations help ensure functionality.
 
 <br>
 
-**Note:**
+**Biggest CMMS Implementation Challenges and How to Overcome Them**
 
-- It is acceptable to provide multiple links for a single sub-topic.
-- Be sure to explain what resource(s) you found most helpful for the current milestone.
+[Biggest CMMS Implementation Challenges and How to Overcome Them](https://www.fieldcircle.com/articles/cmms-implementation-steps/) :
+What I've learned from Fieldcircle's article is that implementing a CMMS system involves following a structured 10-step process, starting from choosing the right software to continually auditing and improving the system. Successful implementation requires assembling a knowledgeable team, educating users thoroughly, standardizing data, and planning for ongoing audits. It emphasizes smooth adoption, customization to fit organizational needs, and integrating best practices to maximize system efficiency and reliability.
+
+<br>
+
+**Dashboard Design: Considerations and Best Practices**
+
+[Dashboard Design: Considerations and Best Practices](https://www.toptal.com/designers/data-visualization/dashboard-design-best-practices): What I've learned from this article is that good dashboard design makes data easy to understand at a glance, which is something that could really improve a CMMS. A CMMS dashboard should be simple to use and customizable, showing key info like maintenance schedules, asset statuses, and work orders without overwhelming the user. By focusing on user needs and using tools like data visualization and progressive disclosure, we can create a dashboard that helps maintenance teams quickly get what they need, stay on top of their tasks, and make better decisions to keep things running smoothly.
