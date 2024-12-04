@@ -14,13 +14,16 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-⚙️ Overview - What I worked on this past week
+⚙️ Overview - This past week, I focused on updating log files in the project repository and improving my time management skills to stay on track. I also worked on understanding how to jump between branches and use GitHub workflows more effectively, including creating and merging branches. As well as keeping track of my progress using Milestones #.
+
 <br>
-🌵 Challenges - What problems did I have & how I'm addressing them
+🌵 Challenges - I struggled with figuring out how to manage multiple branches without causing conflicts. I also was a bit rocking with the time management aspect of things.
+
 <br>
-🏆 Accomplishments - What is something I "leveled up" on this week
+🏆 Accomplishments - I improved my proficiency with GitHub by successfully managing feature branches and improving my workflow efficiency. I also gained some new skills in organizing and maintaining detailed log files for better project tracking.
+
 <br>
-🔮 Next Steps - What I plan to prioritize and do nexts
+🔮 Next Steps - Next, I plan to focus on conducting more research into effective application design strategies and begin working on the design and layout for the Maintenance Management System.
 
 ### Week 2
 
