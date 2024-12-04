@@ -1,34 +1,91 @@
-# Maintenance Management System
+# LevMaintenance Management System (LMS)
 
 ## Application Definition Statement
 
-The Maintenance Management System is a web-based application designed to help businesses efficiently manage maintenance tasks, track asset status, and automate preventive maintenance schedules. This system streamlines communication between maintenance teams and administrators, ensuring that work orders, resources, and task statuses are organized and accessible in real time.
+LevMaintenance Management System is a web-based application designed to help bus companies efficiently manage maintenance tasks, track vehicle statuses, and automate preventive maintenance schedules. This system streamlines communication between maintenance teams and fleet managers, ensuring that work orders, resources, and task statuses are organized and accessible in real time. The goal is to minimize vehicle downtime and ensure safety and compliance with industry standards.
+
+- Conducted interviews with two public school bus fleet manager. Key insights included the need for mobile task management and automated alerts for scheduled bus maintenance.
 
 ## Target Market
 
-_Using Primary and Secondary research, describe the people most likely to be utilizing your application. What are their ages, education level, employment sector, income level, hobbies, or any other defining characteristics that set them apart from other groups of people? Identifying specific groups will help drive application design choices._
-
-_Primary Research is research that you have conducted yourself and is not based on secondary sources. Examples of Primary Research include surveys, interviews, and focus groups. This doesn't have to be formal in nature and can include discussions you have with individuals that are likely users of your application. Secondary Research is research that has been conducted by others and is based on their findings. Examples of Secondary Research include market research reports, industry publications, and news articles._
-
-[ Replace this text with a description of any Primary and Secondary research you conducted to determine the Target Market for your application. Link to any references used during this research. ]
+The primary users of this system are bus fleet managers, maintenance supervisors, and technicians working for transit agencies, private bus companies, and school districts.
 
 ## User Profile / Persona
 
-_User profiles are a snapshot of an actual person and helps to open a window into the mind of an actual user and will provide insight while tailoring and refining interaction details to best fit your ideal users within your Target Market._
+```bash
+const mongoose = require('mongoose');
 
-[ Replace this text with a User Profile / Persona for your application. If necessary, research 'Web User Persona' to generate ideas. ]
+const userSchema = new mongoose.Schema({
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    auto: true,
+  },
+  first_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  last_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  role: {
+    type: String,
+    enum: ['Fleet Manager', 'Technician', 'Administrator'],
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  phone_number: {
+    type: String,
+    required: false,
+  },
+  organization_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organization',
+    required: true,
+  },
+  created_at: {
+    type: Date,
+    default: Date.now,
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+module.exports = mongoose.model('User', userSchema);
+
+```
 
 ## Use Cases
 
-_A 'Use Case' describes how a user may interact with your application. It provides a series of steps to reach a desired result. If a user wants to listen to some music during a workout, how many clicks would it take to do that? Begin with a simple question like that and then map out the different steps to reach the desired goal. Use cases help us think through how our application will be used._
+- ### Scenario:
 
-_Use Cases help drive design decisions as well as testing procedures. During development we regularly test and confirm the work in progress matches up with our Use Cases. This provides valuable insight into how our application is addressing the needs of the user and allows us to correct missteps early. This [article](https://www.softwaretestinghelp.com/use-case-testing/) gives additional background Use Cases and Use Case Testing._
+  A bus breaks down on the road and needs immediate attention.
 
-[ Describe two or more Use Cases for your application. Use a bulleted list to describe the steps involved in each Use Case. ]
+- ### Steps:
+  1. Log in to the system.
+  1. Create an emergency work order and add details about the issue.
+  1. Assign the nearest available technician to the task.
+  1. Technician updates the status in real time after completing the repair.
+- ### Outcome:
+  The fleet manager and dispatcher receive real-time updates on the repair status.
 
 ## Problem Statement
 
-- Maintenance teams struggle with inefficient task tracking and resource management, leading to equipment downtime and missed deadlines. Existing solutions are often complex and not tailored to smaller organizations.
+Maintenance teams struggle with inefficient task tracking, vehicle scheduling, and resource management, leading to frequent breakdowns and service delays. Existing solutions are often too complex or not tailored to fleet-specific needs.
 
 ## Pain Points
 
@@ -77,5 +134,5 @@ _Use Cases help drive design decisions as well as testing procedures. During dev
 
 - ### Custom Django REST API:
 
-  - Backend for managing work orders, users, and assets.
-    Will integrate seamlessly with the PostgreSQL database for data management.
+  - The backend API, built with Node.js and Express, will manage work orders, vehicles, and users.
+  - The API integrates seamlessly with MongoDB for data storage, leveraging Mongoose for schema validation and CRUD operations.
