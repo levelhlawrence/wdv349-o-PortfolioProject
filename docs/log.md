@@ -20,7 +20,7 @@ Each week I will summarize my milestone activity and progress by writing a stand
 <br>
 🏆 Accomplishments - What is something I "leveled up" on this week
 <br>
-🔮 Next Steps - What I plan to prioritize and do next
+🔮 Next Steps - What I plan to prioritize and do nexts
 
 ### Week 2
 
