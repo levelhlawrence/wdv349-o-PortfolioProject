@@ -9,37 +9,35 @@
 ## Maintenance Management App Design Process
 
 This document contains general notes related to the research and design considerations for developing a maintenance management application.
-<br>
 
-## User Needs and Pain Points
+- ### User Needs and Pain Points
 
-- Maintenance teams need real-time tracking of tasks and asset status.
+  - Maintenance teams need real-time tracking of tasks and asset status.
 
-- Users prefer a mobile-friendly interface for field access.
+  - Users prefer a mobile-friendly interface for field access.
 
-- Simplified reporting features can significantly improve efficiency.
+  - Simplified reporting features can significantly improve efficiency.
+    <br>
 
-<br>
+- ### The Importance of Wireframes in Development
 
-## Technical Requirements
+  - Wireframes provide a visual structure to clarify navigation and layout.
 
-- Node.js and MongoDB offer scalability and efficiency for backend development.
+  - Helps identify and resolve usability issues early in the process.
 
-- MongoDB provides flexible schema design for handling diverse datasets.
+  - Supports scalability planning for content growth and future updates.
 
-- Authentication and role-based access control are critical for security (most likely Passport or OAuth).
+  - Facilitates team collaboration and iterative feedback.
 
-<br>
+- ### Product Development Framework and Misuse Cases
 
-## Competitor Analysis
+  - A structured, iterative framework is essential for defining user needs and prioritizing pain points.
 
-- Existing apps often lack customization options for specific industries.
+  - Misuse cases help anticipate and mitigate risks from negative user behavior.
 
-- Competitor tools focus heavily on scheduling but less on analytics.
+  - Framework stages: Clarify, Understand, Define Users, Create Use Cases, Identify Problems, and Ideate.
 
-- Integration with IoT devices is becoming a competitive advantage (Likely out of scope).
-
-<br>
+  - Prioritization ensures resources focus on solving impactful problems.
 
 ## Reference Links
 
