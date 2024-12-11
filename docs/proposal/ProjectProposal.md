@@ -136,3 +136,7 @@ Maintenance teams struggle with inefficient task tracking, vehicle scheduling, a
 
   - The backend API, built with Node.js and Express, will manage work orders, vehicles, and users.
   - The API integrates seamlessly with MongoDB for data storage, leveraging Mongoose for schema validation and CRUD operations.
+
+## Style Tile
+
+- Link to Project [Style Tile](../designs/Styletile.jpg)
