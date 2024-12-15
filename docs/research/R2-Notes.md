@@ -1,6 +1,6 @@
 # Project & Portfolio
 
-- **Research Notes - Milestone #2**
+- **Research Notes - Milestone 2**
 - **Level Lawrence**
 - **Assignment Due Date: 12/08/2024**
 
