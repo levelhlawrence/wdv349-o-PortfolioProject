@@ -48,7 +48,13 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+⚙️ Overview - This week, I focused on design and best UI/UX practices, creating a basic frontend and developing a working prototype. I prioritized user-friendly features and ensured the design followed modern standards while remaining functional.
+
+🌵 Challenges - Time management remained a significant challenge as I balanced design, coding, and researching potential use cases. The broad scope of possibilities often made it difficult to stay focused, but I addressed this by narrowing my research and breaking tasks into manageable sections.
+
+🏆 Accomplishments - I successfully implemented a functional prototype while improving my understanding of UI/UX principles. Translating design concepts into a working interface felt like a major step forward.
+
+🔮 Next Steps - I plan to refine the frontend further, enhancing its design and usability. Once the frontend reaches a satisfactory level, I’ll begin building a basic backend using Django, focusing on establishing essential database connections and backend logic to support the prototype’s functionality.
 
 ### Week 4
 
