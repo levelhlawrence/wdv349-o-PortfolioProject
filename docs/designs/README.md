@@ -5,7 +5,8 @@
 These are links to my Figma design and style tile.
 
 - [Style Tile](https://www.figma.com/design/fAdnEzrqMpRch4UDowDpuV/StyleTile?node-id=0-1&t=gqYNkXs4XqGUCl0V-1)
-- [Design](https://www.figma.com/design/bAm3I5rbR2JFqRAb0gFRb6/Untitled?node-id=0-1&t=oMirvS5Pap1I3kWD-1)
+- [Design](https://www.figma.com/design/bAm3I5rbR2JFqRAb0gFRb6/Untitled?node-id=21-1271&m=dev&t=KKStS30Qus2pPtrP-1)
+- [Click Through Prototype](https://www.figma.com/proto/bAm3I5rbR2JFqRAb0gFRb6/Untitled?page-id=0%3A1&node-id=1-10&viewport=960%2C306%2C0.34&t=bpZHSiLak9yeAkvD-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A3)
 
 <br>
 
