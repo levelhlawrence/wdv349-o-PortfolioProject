@@ -16,31 +16,21 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ⚙️ Overview - This past week, I focused on updating log files in the project repository and improving my time management skills to stay on track. I also worked on understanding how to jump between branches and use GitHub workflows more effectively, including creating and merging branches. As well as keeping track of my progress using Milestones #.
 
-<br>
-
 🌵 Challenges - I struggled with figuring out how to manage multiple branches without causing conflicts. I also was a bit rocking with the time management aspect of things.
-
-<br>
 
 🏆 Accomplishments - I improved my proficiency with GitHub by successfully managing feature branches and improving my workflow efficiency. I also gained some new skills in organizing and maintaining detailed log files for better project tracking.
 
-<br>
-
 🔮 Next Steps - Next, I plan to focus on conducting more research into effective application design strategies and begin working on the design and layout for the Maintenance Management System.
+
+<br>
 
 ### Week 2
 
 ⚙️ Overview - I focused on design research and wireframing for the Maintenance Management System this week. I explored different design principles and tools to create effective and user-friendly layouts.
 
-<br>
-
 🌵 Challenges - I couldn’t get the final design to my liking, and it took longer than expected to settle on a direction. I still gained valuable insights along the way.
 
-<br>
-
 🏆 Accomplishments - I made significant progress in wireframing and established a solid foundation for the application design. While it’s not finalized, I’m happy with how it’s progressing and the skills I’m developing.
-
-<br>
 
 🔮 Next Steps - I plan to iterate on the wireframes, finalize the design, and begin implementing the layout in code. I will also continue researching best practices for maintaining consistent design elements.
 
@@ -55,6 +45,8 @@ Each week I will summarize my milestone activity and progress by writing a stand
 🏆 Accomplishments - I successfully implemented a functional prototype while improving my understanding of UI/UX principles. Translating design concepts into a working interface felt like a major step forward.
 
 🔮 Next Steps - I plan to refine the frontend further, enhancing its design and usability. Once the frontend reaches a satisfactory level, I’ll begin building a basic backend using Django, focusing on establishing essential database connections and backend logic to support the prototype’s functionality.
+
+<br>
 
 ### Week 4
 
