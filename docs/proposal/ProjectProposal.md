@@ -89,9 +89,9 @@ Maintenance teams struggle with inefficient task tracking, vehicle scheduling, a
 
 ## Pain Points
 
-- Task Overlap: Lack of centralized task tracking results in duplicate work orders.
-- Downtime: Reactive maintenance leads to unplanned downtime and costly repairs.
-- Communication Gaps: Poor coordination between technicians and administrators causes delays.
+- **Task Overlap**: Lack of centralized task tracking results in duplicate work orders.
+- **Downtime**: Reactive maintenance leads to unplanned downtime and costly repairs.
+- **Communication Gaps**: Poor coordination between technicians and administrators causes delays.
 
 ## Solution Statement
 
