@@ -1,7 +1,16 @@
 from django.db import models
 
-# Create your models here.
 
+# Property model
+class Location(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+# Bus model
 class Bus(models.Model):
     vehicle = models.IntegerField()
     vin = models.CharField(max_length=17)
@@ -22,4 +31,6 @@ class Bus(models.Model):
     next_service_due = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return f'Bus #{self.id} {self.vehicle} {self.year}'
+        return f'{self.vehicle}'
+
+# Employee
