@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
 from .models import Bus
 from .serializers import BusSerializer
 
+
 # Create your views here.
-class BusListCreate(generics.ListCreateAPIView):
+class BusViewSet(ModelViewSet):
     queryset = Bus.objects.all()
     serializer_class = BusSerializer
