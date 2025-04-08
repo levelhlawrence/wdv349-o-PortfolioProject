@@ -1,12 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import Bus, Employee, Location
-from .serializers import BusSerializer, LocationSerializer, EmployeeSerializer
+from .models import VehicleProfile, Employee, Location
+from .serializers import VehicleProfileSerializer, LocationSerializer, EmployeeSerializer
 
 
 # Create your views here.
-class BusViewSet(ModelViewSet):
-    queryset = Bus.objects.all()
-    serializer_class = BusSerializer
+class VehicleProfileViewSet(ModelViewSet):
+    queryset = VehicleProfile.objects.all()
+    serializer_class = VehicleProfileSerializer
 
 
 class LocationViewSet(ModelViewSet):
