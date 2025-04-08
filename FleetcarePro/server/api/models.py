@@ -14,6 +14,9 @@ class Location(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
+    city = models.CharField(max_length=10, null=True)
+    state = models.CharField(max_length=10, null=True)
+    zip = models.IntegerField(max_length=10, null=True)
     phone = models.CharField(max_length=10, null=True)
     fax = models.CharField(max_length=10, null=True)
 
@@ -30,6 +33,7 @@ class VehicleProfile(models.Model):
     vin_number = models.CharField(null=True)
     tag_no = models.CharField(null=True)
     body_year = models.CharField(null=True)
+    current_location = models.ForeignKey(Location, on_delete=models.SET_NULL, related_name='buses', blank=True, null=True)
     next_ps_date = models.CharField(null=True)
     inservice_date = models.CharField(null=True)
     vehicle_class = models.CharField(null=True)
