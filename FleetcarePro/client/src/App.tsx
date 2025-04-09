@@ -1,11 +1,22 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/router";
+import { Routes, Route } from "react-router-dom";
+// importing pages
+import WorkOrder from "@/pages/WorkOrder.tsx";
+import Login from "@/pages/Login.tsx";
+import Settings from "@/pages/Settings.tsx";
+import NavBar from "@/components/NarBar.tsx";
 
 function App() {
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <div>
+      <Routes>
+        <Route path="login" element={<Login />} />
+      </Routes>
+      <NavBar />
+      <Routes>
+        <Route index element={<WorkOrder />} />
+        <Route path="settings" element={<Settings />} />
+      </Routes>
+    </div>
   );
 }
 
