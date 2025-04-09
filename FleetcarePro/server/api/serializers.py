@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import VehicleProfile, Location, Employee
+from .models import VehicleProfile, Location, Employee, WorkOrder
 
 
 class VehicleProfileSerializer(serializers.ModelSerializer):
@@ -17,6 +17,11 @@ class LocationSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
+        fields = '__all__'
+
+class WorkOrdersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkOrder
         fields = '__all__'
 #
 # class TokenSerializer(serializers.ModelSerializer):

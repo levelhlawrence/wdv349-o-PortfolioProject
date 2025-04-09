@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 
 
 # Token Model
@@ -16,7 +18,7 @@ class Location(models.Model):
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=10, null=True)
     state = models.CharField(max_length=10, null=True)
-    zip = models.IntegerField(max_length=10, null=True)
+    zip = models.IntegerField(null=True)
     phone = models.CharField(max_length=10, null=True)
     fax = models.CharField(max_length=10, null=True)
 
@@ -138,4 +140,39 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} : {self.role}"
+    
 
+# Work Orders
+class WorkOrder(models.Model):
+    custom_id = models.CharField(max_length=20, unique=True, editable=False)
+    vehicle = models.ForeignKey('VehicleProfile', on_delete=models.CASCADE, related_name='work_orders')
+    assigned_employee = models.ForeignKey('Employee', on_delete=models.SET_NULL, null=True, blank=True, related_name='work_orders')
+    location = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True, blank=True, related_name='work_orders')
+    
+    issue_description = models.TextField()
+    notes = models.TextField(null=True, blank=True)
+    labor_hours = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    parts_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    total_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    STATUS_CHOICES = [
+        ('open', 'Open'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('closed', 'Closed'),
+    ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open')
+
+    def save(self, *args, **kwargs):
+        if not self.custom_id:
+            now = timezone.now()
+            prefix = now.strftime("%Y-%m")
+            count = WorkOrder.objects.filter(custom_id__startswith=prefix).count() + 1
+            self.custom_id = f"{prefix}-{str(count).zfill(3)}"
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"WO {self.custom_id} - {self.vehicle}"
