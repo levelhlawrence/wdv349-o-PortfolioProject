@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import VehicleProfile, Employee, Location
-from .serializers import VehicleProfileSerializer, LocationSerializer, EmployeeSerializer
+from .models import VehicleProfile, Employee, Location, WorkOrder
+from .serializers import VehicleProfileSerializer, LocationSerializer, EmployeeSerializer, WorkOrdersSerializer
 
 
 # Create your views here.
@@ -17,3 +17,7 @@ class LocationViewSet(ModelViewSet):
 class EmployeeViewSet(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+class WorkOrderViewSet(ModelViewSet):
+    queryset = WorkOrder.objects.all()
+    serializer_class = WorkOrdersSerializer
