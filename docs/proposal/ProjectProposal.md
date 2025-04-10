@@ -140,3 +140,7 @@ Maintenance teams struggle with inefficient task tracking, vehicle scheduling, a
 ## Style Tile
 
 - Link to Project [Style Tile](../designs/Styletile.jpg)
+
+## Click the link below to see the changes made to this project
+
+- Change order link [Recent Changes](../changeOrder/changeOrder.md)
