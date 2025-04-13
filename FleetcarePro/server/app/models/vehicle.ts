@@ -74,6 +74,7 @@ const vehicleSchema = new Schema(
     pm_month_2: Date,
     pm_month_3: Date,
     pm_class: String,
+    facility: { type: Schema.Types.ObjectId, ref: "Facility" },
   },
   { collection: "Vehicles" }
 );
