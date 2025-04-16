@@ -89,12 +89,12 @@ end, incorporating feedback and refactoring as needed.
 
 ### Week 5
 
-⚙️ Overview
+⚙️ Overview - This week, I transitioned the backend of my project from Python/Django to a Node.js stack using TypeScript, Express, and MongoDB. I focused on setting up the API architecture and laying the groundwork for scalable server-side development.
 
-🌵 Challenges -
+🌵 Challenges - I faced some roadblocks in getting the API up and running, especially when testing the routes and ensuring proper connections to the database. The shift in tech stack also came with a learning curve in adapting previous logic to the new environment.
 
-🏆 Accomplishments -
+🏆 Accomplishments - I successfully configured the backend server, established a working API, and ensured MongoDB connectivity. I now have a solid server-side foundation to build on.
 
-🔮 Next Steps -
+🔮 Next Steps - I’ll begin building out the frontend, connecting it to the API, and focusing on user interaction with the new backend setup. I also plan to refine route testing and start writing initial frontend components with improved TypeScript structure.
 
 <br>
