@@ -86,3 +86,15 @@ existing templates and examples from other repositories. I'm going to continue t
 end, incorporating feedback and refactoring as needed.
 
 <br>
+
+### Week 5
+
+⚙️ Overview
+
+🌵 Challenges -
+
+🏆 Accomplishments -
+
+🔮 Next Steps -
+
+<br>
