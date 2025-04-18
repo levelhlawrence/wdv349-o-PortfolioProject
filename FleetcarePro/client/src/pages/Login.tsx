@@ -4,23 +4,35 @@ import maintLogo1 from "../assets/maintLogo1.svg";
 // shadcn ui
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function LoginForm() {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const formDataHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+
+    console.log(`${id}: ${value}`);
+  };
+
   return (
     <section className="flex justify-between">
-      <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none">
+      <aside className="flex flex-col left-0 right-0 mx-auto bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none md:w-full">
         {/* Form Section */}
-        <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10">
+        <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10 md:w-[20rem]">
           <h2 className="text-3xl font-bold mb-8">Login Form</h2>
-          <form className="flex flex-col w-full">
+          <form id="login-form" className="flex flex-col w-">
             <label className="text-sm" htmlFor="username">
               Username
             </label>
-            <Input id="username" type="text" />
+            <Input onChange={formDataHandler} id="username" type="text" />
             <label className="mt-8 text-sm" htmlFor="pw-key">
               Password
             </label>
-            <Input id="pw-key" type="password" />
+            <Input onChange={formDataHandler} id="pw-key" type="password" />
             <Button type="submit" className="w-fit mt-6">
               Submit
             </Button>
@@ -33,10 +45,10 @@ export default function LoginForm() {
           <h1 className=" drop-shadow-sm text-white z-20 relative text-center md:mt-10 text-4xl font-bold">
             Fleet<span className="font-light">Care</span> Pro
           </h1>
-          <div className="z-20 relative ">
+          <div className="z-20 relative md:absolute md:bottom-1/2">
             <img
               id="bus-logo"
-              className="drop-shadow-md w-20 mr-4"
+              className="drop-shadow-md w-20 md:w-[12rem] mr-4"
               src={maintLogo1}
               alt="fleet care pro logo"
             />
