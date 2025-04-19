@@ -6,9 +6,9 @@ The Proposal and Tech Stack documents summarize the current project scope accura
 
 ## Tech Stack
 
-The tech stack overall remains the same.
+The tech stack overall remains the same. The only major change is the backend which was switch to Python Django and is now changed to NodeJS, Express, and TypeScript.
 
-- **Backend:** [Python Django REST](https://www.django-rest-framework.org/)
+- **Backend:** [NodeJS/TypeScript](https://blog.logrocket.com/express-typescript-node/)
 - **Frontend:** [ReactJS](https://react.dev/learn)
 
 ## Proposed Changes to Project Scope
