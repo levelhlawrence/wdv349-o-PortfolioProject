@@ -15,7 +15,34 @@ export default function LoginForm() {
   const formDataHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
 
-    console.log(`${id}: ${value}`);
+    if (id === "username") {
+      setFormData((prevState) => ({
+        ...prevState,
+        username: value,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        password: value,
+      }));
+    }
+  };
+
+  const submitHandler = (e) => {
+    const pwValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (formData.username.length < 3) {
+      alert("Username must be at least 3 characters long.");
+      return;
+    } else if (formData.password.match(pwValidation) === null) {
+      alert(
+        "Password must be at least 8 characters long and contain at least one letter and one number."
+      );
+      return;
+    }
+
+    e.preventDefault();
+    console.log("formData:", formData);
   };
 
   return (
@@ -28,27 +55,41 @@ export default function LoginForm() {
             <label className="text-sm" htmlFor="username">
               Username
             </label>
-            <Input onChange={formDataHandler} id="username" type="text" />
+            <Input
+              required
+              onChange={formDataHandler}
+              id="username"
+              type="text"
+            />
             <label className="mt-8 text-sm" htmlFor="pw-key">
               Password
             </label>
-            <Input onChange={formDataHandler} id="pw-key" type="password" />
-            <Button type="submit" className="w-fit mt-6">
+            <Input
+              onChange={formDataHandler}
+              id="pw-key"
+              type="password"
+              required
+            />
+            <Button
+              onClick={submitHandler}
+              type="submit"
+              className="w-fit mt-6"
+            >
               Submit
             </Button>
           </form>
         </div>
       </aside>
       {/* background image section*/}
-      <aside className="bg-gradient-to-t from-emerald-600 to-emerald-400 h-screen w-full md:relative z-10 flex flex-col justify-between overflow-hidden">
+      <aside className="bg-gradient-to-t from-emerald-600 to-emerald-400 h-screen w-full md:relative z-10 flex flex-col justify-between overflow-hidden ">
         <div className=" flex flex-row-reverse justify-center items-center mt-10">
           <h1 className=" drop-shadow-sm text-white z-20 relative text-center md:mt-10 text-4xl font-bold">
             Fleet<span className="font-light">Care</span> Pro
           </h1>
-          <div className="z-20 relative md:absolute md:bottom-1/2">
+          <div className="z-20 relative md:absolute md:h-full md:w-full md:top-0 md:flex md:justify-center">
             <img
               id="bus-logo"
-              className="drop-shadow-md w-20 md:w-[12rem] mr-4"
+              className="drop-shadow-md w-20 md:w-[16rem] mr-4"
               src={maintLogo1}
               alt="fleet care pro logo"
             />
