@@ -4,6 +4,7 @@ import { IoHome } from "react-icons/io5";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa";
 import { FaDisplay } from "react-icons/fa6";
+import { FaBus } from "react-icons/fa6";
 
 export const navRoutes = [
   {
@@ -20,6 +21,11 @@ export const navRoutes = [
     name: "calendar",
     icon: <FaRegCalendarAlt size={30} />,
     href: "/calendar",
+  },
+  {
+    name: "fleet",
+    icon: <FaBus size={30} />,
+    href: "/fleet",
   },
   {
     name: "parts",
