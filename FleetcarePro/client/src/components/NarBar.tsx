@@ -41,7 +41,7 @@ export default function NarBar() {
               <li key={route.name}>
                 <a className="flex items-center gap-4" href={route.href}>
                   {route.icon}
-                  {route.name}
+                  {route.name.charAt(0).toUpperCase() + route.name.slice(1)}
                 </a>
               </li>
             );

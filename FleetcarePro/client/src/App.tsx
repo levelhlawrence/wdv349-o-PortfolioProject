@@ -7,6 +7,7 @@ import Login from "@/pages/Login.tsx";
 import Settings from "@/pages/Settings.tsx";
 import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
+import Fleet from "@/pages/Fleet.tsx";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,9 @@ function App() {
         {/* <Route path="/workorders/edit/:id" element={<EditWorkOrder />} /> */}
         {/* <Route path="/workorders/delete/:id" element={<DeleteWorkOrder />} /> */}
         {/* <Route path="/workorders/print/:id" element={<PrintWorkOrder />} /> */}
+        <Route path="/calendar" element={<Home />} />
+        <Route path="/fleet" element={<Fleet />} />
+        <Route path="/parts" element={<Home />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>
