@@ -89,12 +89,22 @@ end, incorporating feedback and refactoring as needed.
 
 ### Week 5
 
-⚙️ Overview
+⚙️ Overview - This week, I transitioned the backend of my project from Python/Django to a Node.js stack using TypeScript, Express, and MongoDB. I focused on setting up the API architecture and laying the groundwork for scalable server-side development.
 
-🌵 Challenges -
+🌵 Challenges - I faced some roadblocks in getting the API up and running, especially when testing the routes and ensuring proper connections to the database. The shift in tech stack also came with a learning curve in adapting previous logic to the new environment.
 
-🏆 Accomplishments -
+🏆 Accomplishments - I successfully configured the backend server, established a working API, and ensured MongoDB connectivity. I now have a solid server-side foundation to build on.
 
-🔮 Next Steps -
+🔮 Next Steps - I’ll begin building out the frontend, connecting it to the API, and focusing on user interaction with the new backend setup. I also plan to refine route testing and start writing initial frontend components with improved TypeScript structure.
 
 <br>
+
+### Week 6
+
+⚙️ Overview – This week, I focused on creating the Work Order pages. I invested time in researching best practices for MongoDB document design and RESTful route design, particularly for the work order model. I also began implementing the frontend components that allow users to create and view work orders.
+
+🌵 Challenges – I encountered some difficulties in terms of creating a pliable task model that could be slotted into work orders. Achieving normalization while keeping usability in mind took some iteration. I also had to invest extra time in aligning frontend forms with the backend schema.
+
+🏆 Accomplishments – I succeeded in implementing the core Work Order model in Mongoose and establishing relationships with the Vehicle and User models. I also set a functional UI within React for new work order insertion, and initiated styling pages to enhance user interface.
+
+🔮 What's Next – I'll go ahead and continue to update the Work Order pages with delete and update functionality, and add more validation on the frontend as well as backend. I will also implement automatic costing based on labor and parts. Additionally, task tracking will be tested in individual work orders, and facility-specific data will be associated.

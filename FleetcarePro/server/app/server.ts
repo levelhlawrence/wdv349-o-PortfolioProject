@@ -8,6 +8,7 @@ import database from "./database/database";
 import userRoutes from "./routes/userRoutes";
 import vehicleRouter from "./routes/vehicleRoutes";
 import facilityRoutes from "./routes/facilityRoutes";
+import workOrderRouter from "./routes/workorderRoutes";
 
 // Setup
 const app: express.Express = express();
@@ -26,6 +27,7 @@ app.use(morgan("dev"));
 app.use("/api_v1/users", userRoutes);
 app.use("/api_v1/vehicles", vehicleRouter);
 app.use("/api_v1/facilities", facilityRoutes);
+app.use("/api_v1/workorders", workOrderRouter);
 
 // Example route
 app.get("/", (req: Request, res: Response) => {
