@@ -60,7 +60,6 @@ const workOrderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Facility",
     },
-    tasks: [taskSchema],
   },
   { collection: "WorkOrders" }
 );
