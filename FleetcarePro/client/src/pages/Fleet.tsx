@@ -4,6 +4,12 @@ import { IoIosSearch } from "react-icons/io";
 import AllVehicles from "../components/FleetComponents/AllVehicles";
 
 export default function Fleet() {
+  const testSelect = () => {
+    const select = document.getElementById("vehicles") as HTMLSelectElement;
+    const selectedValue = select.value;
+    console.log(selectedValue);
+  };
+
   return (
     <section className="relative md:ml-64 z-10">
       <form>
@@ -28,8 +34,8 @@ export default function Fleet() {
           {/* Button chooses */}
           <select name="vehicles" id="vehicles">
             <option value="all_vehicles">All Vehicles</option>
-            <option value="all_vehicles">single vehicle</option>
-            <option value="all_vehicles">All Vehicles</option>
+            <option value="all_vehicles">Buses Only</option>
+            <option value="all_vehicles">White Fleet Only</option>
           </select>
         </div>
       </form>
