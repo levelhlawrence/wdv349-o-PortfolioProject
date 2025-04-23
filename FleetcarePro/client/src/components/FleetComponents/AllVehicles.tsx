@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
+const dotenv = import.meta.env;
 
 const AllVehicles = () => {
   // show all vehicles by default
@@ -12,7 +13,7 @@ const AllVehicles = () => {
   const getAllVehicles = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api_v1/vehicles?page=${page}`
+        `${dotenv.VITE_API_URL}/vehicles?page=${page}`
       );
       setAllVehicles(response.data);
       console.log("All vehicles:", response.data);
@@ -50,8 +51,8 @@ const AllVehicles = () => {
               <span className="font-bold">{allVehicles?.totalItems}</span>
             </p>
             <div id="arrow-btns" className="flex gap-4 mr-8">
-              <FaArrowLeft onClick={prevPage} />
-              <FaArrowRight onClick={nextPage} />
+              <FaArrowLeft className="cursor-pointer" onClick={prevPage} />
+              <FaArrowRight className="cursor-pointer" onClick={nextPage} />
             </div>
           </div>
           <p className="mb-4">
@@ -65,8 +66,6 @@ const AllVehicles = () => {
                 <th>Make</th>
                 <th>Model</th>
                 <th>Year</th>
-                <th>Vin</th>
-                <th>Status</th>
               </tr>
             </thead>
             {allVehicles?.vehicles?.map((vehicle) => {
@@ -77,8 +76,6 @@ const AllVehicles = () => {
                     <td>{vehicle.body_make}</td>
                     <td>{vehicle.body_model}</td>
                     <td>{vehicle.body_year}</td>
-                    <td>{vehicle.vin_number}</td>
-                    <td>{vehicle.status}</td>
                   </tr>
                 </tbody>
               );
