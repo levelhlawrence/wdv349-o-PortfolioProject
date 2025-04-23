@@ -1,6 +1,22 @@
 import { IoIosSearch } from "react-icons/io";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const dotenv = import.meta.env;
 
 export default function WorkOrders() {
+  const [workOrders, setWorkOrders] = useState([]);
+
+  const showAllWorkorders = async () => {
+    const response = await axios.get(`${dotenv.VITE_API_URL}/workorders`);
+    const data = await response.data;
+    setWorkOrders(data);
+    console.log(workOrders);
+  };
+
+  useEffect(() => {
+    showAllWorkorders();
+  }, []);
+
   return (
     <section className="relative md:ml-64 z-10">
       <form>
@@ -30,6 +46,13 @@ export default function WorkOrders() {
       {/* display output */}
       <aside className="px-6 mt-8">
         <p>results</p>
+        {workOrders.w_o.map((workorder) => {
+          return (
+            <div>
+              <p>{workorder.assignedShop}</p>
+            </div>
+          );
+        })}
       </aside>
     </section>
   );
