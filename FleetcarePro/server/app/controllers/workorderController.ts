@@ -3,7 +3,9 @@ import WorkOrder from "../models/workorder";
 
 const getAllWorkOrders = async (req: Request, res: Response) => {
   try {
-    const allWorkorders = await WorkOrder.find();
+    const allWorkorders = await WorkOrder.find()
+      .populate("vehicle")
+      .populate("facility");
     // const page = parseInt(req.query.page as string) || 1;
     // const limit = parseInt(req.query.limit as string) || 10;
     // const skip = (page - 1) * limit;
@@ -27,6 +29,9 @@ const getAllWorkOrders = async (req: Request, res: Response) => {
 
 const createWorkOrders = async (req: Request, res: Response) => {
   try {
+    const date = new Date();
+    const workorderNumber = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
+
     const workorder = await WorkOrder.create(req.body);
     res.status(201).json({ message: "w/o created!", w_o: workorder });
   } catch (error) {
