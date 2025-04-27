@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
 import WorkOrder from "../models/workorder";
+import { v4 as uuidv4 } from "uuid";
 
+// @GET ALL WORKORDERS
 const getAllWorkOrders = async (req: Request, res: Response) => {
   try {
     const allWorkorders = await WorkOrder.find()
       .populate("vehicle")
-      .populate("facility");
+      .populate("facility")
+      .populate("technician");
     // const page = parseInt(req.query.page as string) || 1;
     // const limit = parseInt(req.query.limit as string) || 10;
     // const skip = (page - 1) * limit;
@@ -27,12 +30,17 @@ const getAllWorkOrders = async (req: Request, res: Response) => {
   }
 };
 
+// @POST NEW WORKORDER
 const createWorkOrders = async (req: Request, res: Response) => {
-  try {
-    const date = new Date();
-    const workorderNumber = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
+  const date = new Date();
+  const workorderNumber = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${uuidv4()}`;
 
-    const workorder = await WorkOrder.create(req.body);
+  try {
+    const workorder = await WorkOrder.create({
+      ...req.body,
+      workOrderNumber: workorderNumber,
+    });
+
     res.status(201).json({ message: "w/o created!", w_o: workorder });
   } catch (error) {
     res.status(500).json({ error: error });
