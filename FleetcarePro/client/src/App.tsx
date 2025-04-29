@@ -8,6 +8,10 @@ import Settings from "@/pages/Settings.tsx";
 import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
 import Fleet from "@/pages/Fleet.tsx";
+import WorkOrderDetails from "@/pages/WorkOrders/WorkOrderDetails";
+
+// import context
+import { ApiProvider } from "./components/ApiContext";
 
 function App() {
   const location = useLocation();
@@ -15,13 +19,13 @@ function App() {
 
   const hideNavBar = location.pathname === "/login";
   return (
-    <div>
+    <ApiProvider>
       {!hideNavBar && isLoggedIn && <NavBar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="/workorders" element={<WorkOrders />} />
-        {/* <Route path="/workorders/:id" element={<WorkOrderDetails />} /> */}
+        <Route path="/workorders/:id" element={<WorkOrderDetails />} />
         {/* <Route path="/workorders/create" element={<CreateWorkOrder />} /> */}
         {/* <Route path="/workorders/edit/:id" element={<EditWorkOrder />} /> */}
         {/* <Route path="/workorders/delete/:id" element={<DeleteWorkOrder />} /> */}
@@ -31,7 +35,7 @@ function App() {
         <Route path="/parts" element={<Home />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-    </div>
+    </ApiProvider>
   );
 }
 
