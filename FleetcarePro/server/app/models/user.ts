@@ -4,10 +4,10 @@ import { Schema, model } from "mongoose";
 const userSchema = new Schema({
   firstName: String,
   lastName: String,
-  techId: { type: Number, unique: true },
+  techId: { type: Number, unique: true, required: true },
   userName: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  email: { type: String, unique: true },
+  email: { type: String, unique: true, required: true },
   address: String,
   city: String,
   state: String,
@@ -16,6 +16,7 @@ const userSchema = new Schema({
   dateOfBirth: Date,
   phone: Number,
   role: String,
+  status: String,
 });
 
 const User = model("User", userSchema);
