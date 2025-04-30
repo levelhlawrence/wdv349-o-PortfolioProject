@@ -1,6 +1,7 @@
 import { IoIosSearch } from "react-icons/io";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ShowAllWorkOrders } from "@/components/workorderComponents/AllWorkOrders";
 const dotenv = import.meta.env;
 
 export default function WorkOrders() {
@@ -9,7 +10,7 @@ export default function WorkOrders() {
   const showAllWorkorders = async () => {
     const response = await axios.get(`${dotenv.VITE_API_URL}/workorders`);
     const data = await response.data;
-    setWorkOrders(data);
+    await setWorkOrders(data);
     console.log(workOrders);
   };
 
@@ -36,9 +37,22 @@ export default function WorkOrders() {
             <IoIosSearch size={20} />
           </div>
 
-          <div>
-            <label htmlFor="all-buses">all workorders</label>
-            <input id="all-buses" type="radio" />
+          <div className="flex flex-col mt-2 w-fit">
+            <label
+              htmlFor="workorders"
+              className="font-bold text-sm text-emerald-700"
+            >
+              Query Work Orders:{" "}
+            </label>
+            <select
+              name="workorders"
+              id="workorders"
+              className="w-fit border border-emerald-600 rounded-md p-1 mt-1"
+            >
+              <option value="all">All Work Orders</option>
+              <option value="open">Open Work Orders</option>
+              <option value="closed">Closed Work Orders</option>
+            </select>
           </div>
         </div>
       </form>
@@ -46,13 +60,7 @@ export default function WorkOrders() {
       {/* display output */}
       <aside className="px-6 mt-8">
         <p>results</p>
-        {workOrders.w_o.map((workorder) => {
-          return (
-            <div>
-              <p>{workorder.assignedShop}</p>
-            </div>
-          );
-        })}
+        <ShowAllWorkOrders />
       </aside>
     </section>
   );
