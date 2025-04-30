@@ -9,6 +9,7 @@ import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
 import Fleet from "@/pages/Fleet.tsx";
 import WorkOrderDetails from "@/pages/WorkOrders/WorkOrderDetails";
+import Footer from "./components/Footer";
 
 // import context
 import { ApiProvider } from "./components/ApiContext";
@@ -24,17 +25,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="/workorders" element={<WorkOrders />} />
-        <Route path="/workorders/:id" element={<WorkOrderDetails />} />
+        <Route path="workorders" element={<WorkOrders />} />
+        <Route path="/:id" element={<WorkOrderDetails />} />
+
         {/* <Route path="/workorders/create" element={<CreateWorkOrder />} /> */}
         {/* <Route path="/workorders/edit/:id" element={<EditWorkOrder />} /> */}
         {/* <Route path="/workorders/delete/:id" element={<DeleteWorkOrder />} /> */}
         {/* <Route path="/workorders/print/:id" element={<PrintWorkOrder />} /> */}
-        <Route path="/calendar" element={<Home />} />
-        <Route path="/fleet" element={<Fleet />} />
-        <Route path="/parts" element={<Home />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="calendar" element={<Home />} />
+        <Route path="fleet" element={<Fleet />} />
+        <Route path="parts" element={<Home />} />
+        <Route path="settings" element={<Settings />} />
       </Routes>
+      {!hideNavBar && <Footer />}
     </ApiProvider>
   );
 }

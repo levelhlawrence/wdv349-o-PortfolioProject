@@ -1,6 +1,6 @@
 const WorkOrderDetails = () => {
   return (
-    <div>
+    <div className="bg-red-500 w-screen h-screen">
       <h1>WorkOrderDetails route works</h1>
     </div>
   );
