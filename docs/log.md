@@ -108,3 +108,15 @@ end, incorporating feedback and refactoring as needed.
 🏆 Accomplishments – I succeeded in implementing the core Work Order model in Mongoose and establishing relationships with the Vehicle and User models. I also set a functional UI within React for new work order insertion, and initiated styling pages to enhance user interface.
 
 🔮 What's Next – I'll go ahead and continue to update the Work Order pages with delete and update functionality, and add more validation on the frontend as well as backend. I will also implement automatic costing based on labor and parts. Additionally, task tracking will be tested in individual work orders, and facility-specific data will be associated.
+
+<br>
+
+### Week 7
+
+⚙️ Overview – This week, I began building out the user authentication system, laying the groundwork for secure login and state handling. I also created the Fleet and Work Order pages and connected them via React Router to enable smooth in-app navigation. To manage shared state like user info and login status, I implemented useContext. Additionally, I conducted security research focused on best practices for handling authentication, route protection, and safe data flow across the stack.
+
+🌵 Challenges – The login system is still a work in progress. Integrating authentication with protected routes and global state took some troubleshooting, especially when handling conditional rendering and redirect logic. Ensuring proper separation between public and private routes is also proving to be a key architectural decision.
+
+🏆 Accomplishments – I made solid progress on the authentication structure and now have the context provider in place to manage state globally. The Fleet and Work Order pages are live and accessible through proper routing. My research gave me a better understanding of how to approach frontend and backend security with tools like JWT, bcrypt, and HTTPS protocols.
+
+🔮 What's Next – I’ll complete the authentication flow, including login validation, password hashing, and JWT-based access. I also plan to protect routes based on auth status and begin adding role-based access control. On the UI side, I’ll enhance the Fleet and Work Order pages to include user-specific data filtering and action feedback.
