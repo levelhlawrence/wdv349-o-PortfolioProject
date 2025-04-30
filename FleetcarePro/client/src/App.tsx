@@ -4,6 +4,7 @@ import { useState } from "react";
 // importing pages
 import Home from "@/pages/Home";
 import Login from "@/pages/Login.tsx";
+import SignUp from "@/pages/SignUp";
 import Settings from "@/pages/Settings.tsx";
 import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<SignUp />} />
         <Route path="workorders" element={<WorkOrders />} />
         <Route path="/:id" element={<WorkOrderDetails />} />
 
