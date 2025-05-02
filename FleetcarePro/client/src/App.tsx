@@ -27,8 +27,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        {/* work order routes */}
         <Route path="workorders" element={<WorkOrders />} />
-        <Route path="/:id" element={<WorkOrderDetails />} />
+        <Route path="workorders/:id" element={<WorkOrderDetails />} />
 
         {/* <Route path="/workorders/create" element={<CreateWorkOrder />} /> */}
         {/* <Route path="/workorders/edit/:id" element={<EditWorkOrder />} /> */}

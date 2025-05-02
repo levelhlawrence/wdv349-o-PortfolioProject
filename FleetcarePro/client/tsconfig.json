@@ -1,13 +1,15 @@
 {
-"compilerOptions": {
+  "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-    "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "module": ["es2020"],
+      "bundler": ["esbuild"]
     }
-},
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-]
+  ]
 }

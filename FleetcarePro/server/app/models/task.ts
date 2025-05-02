@@ -14,5 +14,5 @@ const taskSchema = new Schema({
   timeSpentHours: Number,
 });
 
-const taskSchema = model("WorkOrder", taskSchema);
-export default taskSchema;
+const Tasks = model("WorkOrder", taskSchema);
+export default Tasks;
