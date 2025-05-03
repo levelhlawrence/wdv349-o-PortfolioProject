@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export const ShowAllWorkOrders = () => {
   const navigate = useNavigate();
-  const [allWorkOrders, setAllWorkOrders] = useState({});
+  // const [allWorkOrders, setAllWorkOrders] = useState({});
+  // This tells TypeScript that allWorkOrders is an object that may optionally have a w_o property, which is an array.
+  const [allWorkOrders, setAllWorkOrders] = useState<{ w_o?: any[] }>({});
 
   //@GET ALL WORK ORDERS
   const getAllWorkOrders = async () => {
@@ -19,7 +21,9 @@ export const ShowAllWorkOrders = () => {
   };
 
   // OPEN W/O
-  const openWorkOrders = (e) => {
+  // Missing type for event
+  // const openWorkOrders = (e) => {
+    const openWorkOrders = (e: React.MouseEvent<HTMLTableRowElement>) => {  // Should verify correct type
     navigate(e.currentTarget.id);
     console.log(e.currentTarget.id);
   };
@@ -30,6 +34,7 @@ export const ShowAllWorkOrders = () => {
 
   return (
     <article>
+      {/* <p className="text-sm my-4">Total: {allWorkOrders?.w_o?.length}</p> */}      
       <p className="text-sm my-4">Total: {allWorkOrders?.w_o?.length}</p>
       <table className="min-w-full text-center border border-emerald-600 border-collapse">
         <thead>
@@ -42,7 +47,8 @@ export const ShowAllWorkOrders = () => {
         </thead>
         <tbody>
           {allWorkOrders &&
-            allWorkOrders?.w_o?.map((workorder) => {
+          // workorder should have a defined type - need to update when that is done
+            allWorkOrders?.w_o?.map((workorder: any) => {
               return (
                 <tr
                   onClick={openWorkOrders}

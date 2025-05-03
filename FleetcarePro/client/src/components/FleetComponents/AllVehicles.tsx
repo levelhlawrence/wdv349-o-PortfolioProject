@@ -4,9 +4,27 @@ import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 const dotenv = import.meta.env;
 
+// Example of the expected data structure
+// Adjust the types according to your preference
+// If you have a specific structure for vehicles, define it here
+type AllVehiclesData = {
+  totalPages: number;
+  totalItems: number;
+  currentPage: number;
+  vehicles: Vehicle[]; // Define `Vehicle` if needed
+};
+type Vehicle = {
+  bus_no: string;
+  body_make: string;
+  body_model: string;
+  body_year: string;
+  // Add more as needed
+};
+
 const AllVehicles = () => {
   // show all vehicles by default
-  const [allVehicles, setAllVehicles] = useState(true);
+  // const [allVehicles, setAllVehicles] = useState(true);
+  const [allVehicles, setAllVehicles] = useState<AllVehiclesData | null>(null);
   const [page, setPage] = useState(1);
 
   // get all vehicles
@@ -24,7 +42,9 @@ const AllVehicles = () => {
 
   // next page
   const nextPage = () => {
-    if (page < allVehicles?.totalPages) {
+    // Adding a runtime guard to check if allVehicles is defined
+    if (allVehicles?.totalPages !== undefined && page < allVehicles.totalPages) {
+    //if (page < allVehicles?.totalPages) {
       setPage(page + 1);
       getAllVehicles();
     }

@@ -17,6 +17,16 @@ yarn-error.log*
 
 # ENV Vars
 .env
+# Helpful to keep an example env file in the repo
+# but ignore the actual env file.
+# This is useful for example env files that are not meant to be used in production.
+# .env.example
+# .env.local
+# .env.development.local
+# .env.test.local
+# .env.production.local
+# .env.development
+# etc.
 
 # Images, PDFs, ZIPs, etc. 
 # Before committing a binary file, make sure it's really necessary.
@@ -28,3 +38,15 @@ yarn-error.log*
 
 wires/
 .idea
+
+# Additional files to ignore
+dist/
+build/
+*.tsbuildinfo
+
+# Vite/Next/Parcel/etc.
+.vite/
+.next/
+.out/
+.cache/
+.temp/
