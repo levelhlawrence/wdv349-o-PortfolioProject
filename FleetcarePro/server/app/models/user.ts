@@ -1,24 +1,76 @@
-import { Schema, model } from "mongoose";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../database/database"; // Import your Sequelize instance
 
-// User Schema
-const userSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  techId: { type: Number, unique: true, required: true },
-  userName: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
-  email: { type: String, unique: true, required: true },
-  address: String,
-  city: String,
-  state: String,
-  country: String,
-  zip: String,
-  dateOfBirth: Date,
-  phone: Number,
-  role: String,
-  status: String,
-});
+const User = sequelize.define(
+  "User",
+  {
+    firstName: {
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
+    techId: {
+      type: DataTypes.INTEGER,
+      unique: true,
+      allowNull: false,
+    },
+    userName: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    address: {
+      type: DataTypes.STRING,
+    },
+    city: {
+      type: DataTypes.STRING,
+    },
+    state: {
+      type: DataTypes.STRING,
+    },
+    country: {
+      type: DataTypes.STRING,
+    },
+    zip: {
+      type: DataTypes.INTEGER,
+    },
+    dateOfBirth: {
+      type: DataTypes.DATEONLY,
+    },
+    phone: {
+      type: DataTypes.INTEGER,
+    },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: "user",
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: "active",
+    },
+  },
+  {
+    timestamps: true, // Adds createdAt and updatedAt fields
+    indexes: [
+      // Add composite indexes if needed
+      { fields: ["techId"] },
+      { fields: ["userName"] },
+      { fields: ["email"] },
+    ],
+  }
+);
 
-const User = model("User", userSchema);
-// Export the User model
 export default User;

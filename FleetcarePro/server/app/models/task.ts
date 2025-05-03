@@ -1,18 +1,43 @@
-import { Schema, model } from "mongoose";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../database/database";
+import User from "./user";
 
-const taskSchema = new Schema({
-  title: { type: String, required: true },
-  description: String,
-  performedBy: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+const Task = sequelize.define(
+  "WorkOrder",
+  {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+    },
+    notes: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    startedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    timeIn: {
+      type: DataTypes.STRING,
+    },
+    completedAt: {
+      type: DataTypes.DATE,
+    },
+    timeSpentHours: {
+      type: DataTypes.FLOAT,
+    },
   },
-  notes: { required: true, type: String },
-  startedAt: { type: Date, default: Date.now() },
-  timeIn: String,
-  completedAt: Date,
-  timeSpentHours: Number,
+  {
+    timestamps: true,
+  }
+);
+
+Task.belongsTo(User, {
+  foreignKey: "performedById",
+  as: "performedBy",
 });
 
-const Tasks = model("WorkOrder", taskSchema);
-export default Tasks;
+export default Task;

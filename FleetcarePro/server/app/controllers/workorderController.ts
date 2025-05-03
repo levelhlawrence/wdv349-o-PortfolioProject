@@ -23,7 +23,7 @@ const getWorkOrderById = async (req: Request, res: Response) => {
   res.status(200).json({ w_o: workOrder });
 };
 
-// @POST NEW WORK ORDER
+// @CREATE NEW WORK ORDER
 const createWorkOrders = async (req: Request, res: Response) => {
   const date = new Date();
   const workorderNumber = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${uuidv4()}`;

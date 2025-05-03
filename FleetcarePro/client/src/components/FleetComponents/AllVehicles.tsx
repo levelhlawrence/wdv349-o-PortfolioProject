@@ -68,9 +68,9 @@ const AllVehicles = () => {
                 <th>Year</th>
               </tr>
             </thead>
-            {allVehicles?.vehicles?.map((vehicle) => {
+            {allVehicles?.data?.map((vehicle) => {
               return (
-                <tbody>
+                <tbody key={vehicle.bus_no}>
                   <tr className="border-b-2 border-emerald-300">
                     <td className="py-2">{vehicle.bus_no}</td>
                     <td>{vehicle.body_make}</td>
