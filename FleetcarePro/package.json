@@ -6,7 +6,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
   },

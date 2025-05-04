@@ -1,18 +1,52 @@
-import { Schema, model } from "mongoose";
+const { DataTypes } = require("sequelize");
+import { sequelize } from "../database/database";
 
-// Facility Schema
-const facilitySchema = new Schema({
-  name: { type: String, required: true },
-  address: { type: String, required: true },
-  city: { type: String },
-  state: { type: String },
-  country: { type: String },
-  zip: { type: String },
-  phone: { type: String },
-  email: { type: String },
-  website: { type: String },
-  fax: { type: String },
-});
+// Facility Model
+const Facility = sequelize.define(
+  "Facility",
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+    },
+    state: {
+      type: DataTypes.STRING,
+    },
+    country: {
+      type: DataTypes.STRING,
+    },
+    zip: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true,
+      },
+    },
+    website: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true,
+      },
+    },
+    fax: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const Facility = model("Facility", facilitySchema);
 export default Facility;
