@@ -22,7 +22,7 @@ export default function NarBar() {
         <img className="invert w-10 mr-2" src={fleetCareLogo} alt="bus icon" />
         <h1 className="text-2xl">
           <span className="font-bold">Fleet</span>Care
-          <span className="font-bold">Pro</span>
+          <span className="font-bold text-emerald-500">Pro</span>
         </h1>
       </div>
 

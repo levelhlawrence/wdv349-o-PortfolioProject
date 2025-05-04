@@ -9,7 +9,7 @@ import Settings from "@/pages/Settings.tsx";
 import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
 import Fleet from "@/pages/Fleet.tsx";
-import WorkOrderDetails from "@/pages/WorkOrders/WorkOrderDetails";
+import WorkOrderDetails from "@/components/WorkOrders/WorkOrderDetails";
 import Footer from "./components/Footer";
 
 // import context
