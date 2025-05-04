@@ -25,3 +25,18 @@ dist-ssr
 
 *backend/
 backend/
+ ENV Vars
+.env
+
+wires/
+.idea
+
+dist/
+build/
+*.tsbuildinfo
+
+.vite/
+.next/
+.out/
+.cache/
+.temp/

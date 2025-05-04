@@ -1,13 +1,34 @@
 import { IoIosSearch } from "react-icons/io";
+import { useRef, useEffect, useState } from "react";
+import { useApi } from "../components/ApiContext";
 
 //  import components
 import DisplayVehicles from "../components/FleetComponents/DisplayVehicles";
 
 export default function Fleet() {
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const vehFilterSelect = useRef<HTMLSelectElement>(null);
+  const { vehicles, getAllVehicles } = useApi();
+
   const testSelect = () => {
     const select = document.getElementById("vehicles") as HTMLSelectElement;
     const selectedValue = select.value;
     console.log(selectedValue);
+  };
+
+  // next page
+  const nextPage = () => {
+    if (page < vehicles?.totalPages) {
+      setPage(page + 1);
+    }
+    return;
+  };
+  // previous page
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
   };
 
   return (
@@ -37,6 +58,7 @@ export default function Fleet() {
 
           {/* Button chooses */}
           <select
+            ref={vehFilterSelect}
             className="border-gray-300 border rounded-md p-1"
             name="vehicles"
             id="vehicles"
@@ -50,7 +72,16 @@ export default function Fleet() {
 
       {/* display output */}
       <aside id="veh-search-results" className="px-6 mt-8">
-        <DisplayVehicles />
+        <DisplayVehicles
+          vehFilterSelect={vehFilterSelect}
+          nextPage={nextPage}
+          prevPage={prevPage}
+          page={page}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+          vehicles={vehicles}
+          getAllVehicles={getAllVehicles}
+        />
       </aside>
     </section>
   );
