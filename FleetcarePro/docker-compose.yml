@@ -1,0 +1,22 @@
+services:
+  # MongoDB Service
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  # Node.js Server side
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+
+  # React Frontend
+  client:
+    build: ./client
+    ports:
+      - "5173:5173"

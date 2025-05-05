@@ -19,11 +19,11 @@ const getAllWorkOrders = async (req: Request, res: Response) => {
 // @GET WORK ORDER BY ID
 const getWorkOrderById = async (req: Request, res: Response) => {
   const id = req.params.id;
-  const workOrder = await WorkOrder.findById(id);
-  res.status(200).json({ id: workOrder });
+  const workOrder = await WorkOrder.findById(id).populate("technician vehicle");
+  res.status(200).json({ w_o: workOrder });
 };
 
-// @POST NEW WORK ORDER
+// @CREATE NEW WORK ORDER
 const createWorkOrders = async (req: Request, res: Response) => {
   const date = new Date();
   const workorderNumber = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${uuidv4()}`;

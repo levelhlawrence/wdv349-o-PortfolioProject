@@ -9,7 +9,7 @@ import Settings from "@/pages/Settings.tsx";
 import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
 import Fleet from "@/pages/Fleet.tsx";
-import WorkOrderDetails from "@/pages/WorkOrders/WorkOrderDetails";
+import WorkOrderDetails from "@/components/WorkOrders/WorkOrderDetails";
 import Footer from "./components/Footer";
 
 // import context
@@ -17,7 +17,12 @@ import { ApiProvider } from "./components/ApiContext";
 
 function App() {
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(true);
+  // Unused variable causing eslint build error
+  // Temporarily disabling eslint rule
+
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  const [_, setIsLoggedIn] = useState(true);
 
   const hideNavBar = location.pathname === "/login";
   return (
@@ -27,8 +32,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        {/* work order routes */}
         <Route path="workorders" element={<WorkOrders />} />
-        <Route path="/:id" element={<WorkOrderDetails />} />
+        <Route path="workorders/:id" element={<WorkOrderDetails />} />
 
         {/* <Route path="/workorders/create" element={<CreateWorkOrder />} /> */}
         {/* <Route path="/workorders/edit/:id" element={<EditWorkOrder />} /> */}

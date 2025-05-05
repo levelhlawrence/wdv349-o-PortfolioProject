@@ -1,68 +1,70 @@
-import { Schema, model } from "mongoose";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../database/database";
 
-const workOrderSchema = new Schema(
-  {
-    workOrderNumber: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    vehicle: {
-      type: Schema.Types.ObjectId,
-      ref: "Vehicle",
-      required: true,
-    },
-    issueReported: {
-      type: String,
-      required: true,
-    },
-    technician: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    status: {
-      type: String,
-      enum: ["open", "in progress", "on hold", "completed", "cancelled"],
-      default: "open",
-    },
-    priority: {
-      type: String,
-      enum: ["low", "medium", "high", "urgent"],
-      default: "medium",
-    },
-    laborHours: {
-      type: Number,
-      default: 0,
-    },
-    partsUsed: [
-      {
-        partName: String,
-        quantity: Number,
-        unitCost: Number,
-      },
-    ],
-    otherCharges: {
-      type: Number,
-      default: 0,
-    },
-    notes: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    completedAt: Date,
-    totalCost: {
-      type: Number,
-      default: 0,
-    },
-    assignedShop: String,
-    facility: {
-      type: Schema.Types.ObjectId,
-      ref: "Facility",
-    },
+const WorkOrder = sequelize.define("WorkOrder", {
+  workOrderNumber: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
   },
-  { collection: "WorkOrders" }
-);
+  issueReported: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  status: {
+    type: DataTypes.ENUM(
+      "open",
+      "in progress",
+      "on hold",
+      "completed",
+      "cancelled"
+    ),
+    defaultValue: "open",
+  },
+  priority: {
+    type: DataTypes.ENUM("low", "medium", "high", "urgent"),
+    defaultValue: "medium",
+  },
+  laborHours: {
+    type: DataTypes.DECIMAL(6, 2),
+    defaultValue: 0,
+  },
+  otherCharges: {
+    type: DataTypes.DECIMAL(10, 2),
+    defaultValue: 0,
+  },
+  notes: {
+    type: DataTypes.TEXT,
+  },
+  completedAt: {
+    type: DataTypes.DATE,
+  },
+  totalCost: {
+    type: DataTypes.DECIMAL(10, 2),
+    defaultValue: 0,
+  },
+  assignedShop: {
+    type: DataTypes.STRING,
+  },
+});
 
-const WorkOrder = model("WorkOrder", workOrderSchema);
+// Define associations
+WorkOrder.belongsTo(sequelize.models.Vehicle, {
+  foreignKey: {
+    name: "vehicleId",
+    allowNull: false,
+  },
+  as: "vehicle",
+});
+
+WorkOrder.belongsTo(sequelize.models.User, {
+  foreignKey: "technicianId",
+  as: "technician",
+});
+
+WorkOrder.belongsTo(sequelize.models.Facility, {
+  foreignKey: "facilityId",
+  as: "facility",
+});
+
 export default WorkOrder;
