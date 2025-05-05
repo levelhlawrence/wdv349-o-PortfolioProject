@@ -19,14 +19,14 @@ export default function Fleet() {
 
   // next page
   const nextPage = () => {
-    if (page < vehicles?.totalPages) {
+    if (vehicles?.totalPages !== undefined && page < vehicles?.totalPages) {
       setPage(page + 1);
     }
     return;
   };
   // previous page
   const prevPage = () => {
-    if (page > 1) {
+    if (vehicles?.totalPages !== undefined && page > 1) {
       setPage(page - 1);
     }
   };

@@ -56,10 +56,10 @@ const DisplayVehicles = ({
                   className="text-sm hover:bg-emerald-50 hover:cursor-pointer"
                 >
                   <tr className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600">
-                    <div className="flex items-center gap-2">
+                    <td className="py-2 flex items-center gap-2">
                       <IoNewspaperOutline />
-                      <td className="py-2">{vehicle.bus_no}</td>
-                    </div>
+                      {vehicle.bus_no}
+                    </td>
                     <td>{vehicle.body_make}</td>
                     <td>{vehicle.body_model}</td>
                     {window.innerWidth > 800 && <td>{vehicle.vin_number}</td>}

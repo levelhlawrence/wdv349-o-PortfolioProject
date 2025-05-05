@@ -4,26 +4,23 @@ import axios from "axios";
 const dotenv = import.meta.env;
 
 const ApiContext = createContext<any>(null as any);
+type AllVehiclesData = {
+  totalPages: number;
+  totalItems: number;
+  currentPage: number;
+  vehicles: Vehicle[]; // Define `Vehicle` if needed
+};
+type Vehicle = {
+  bus_no: string;
+  body_make: string;
+  body_model: string;
+  body_year: string;
+};
 
 export const ApiProvider = ({ children }: { children: ReactNode }) => {
-  // ***TYPES***
-  type AllVehiclesData = {
-    totalPages: number;
-    totalItems: number;
-    currentPage: number;
-    vehicles: Vehicle[]; // Define `Vehicle` if needed
-  };
-  type Vehicle = {
-    bus_no: string;
-    body_make: string;
-    body_model: string;
-    body_year: string;
-    // Add more as needed
-  };
-
   // ALL STATES
   const [allWorkOrders, setAllWorkOrders] = useState({});
-  const [vehicles:Vehicle, setVehicles] = useState(true);
+  const [vehicles, setVehicles] = useState<AllVehiclesData | null>(null);
 
   // @GET ALL WORKORDERS
   const getAllWorkOrders = async () => {
