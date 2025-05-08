@@ -21,6 +21,7 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   // ALL STATES
   const [allWorkOrders, setAllWorkOrders] = useState({});
   const [vehicles, setVehicles] = useState<AllVehiclesData | null>(null);
+  const [vehicleDetails, setVehicleDetails] = useState(null);
 
   // @GET ALL WORKORDERS
   const getAllWorkOrders = async () => {
@@ -48,8 +49,25 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const getVehicleById = async (id: string | number) => {
+    try {
+      const response = await axios.get(`${dotenv.VITE_API_URL}/vehicles/${id}`);
+      setVehicleDetails(response.data);
+    } catch (error) {
+      console.error("Error fetching vehicle:", error);
+    }
+  };
+
   return (
-    <ApiContext.Provider value={{ allWorkOrders, getAllVehicles, vehicles }}>
+    <ApiContext.Provider
+      value={{
+        getAllVehicles,
+        getVehicleById,
+        vehicles,
+        vehicleDetails,
+        allWorkOrders,
+      }}
+    >
       {children}
     </ApiContext.Provider>
   );

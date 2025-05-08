@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Vehicle from "../models/vehicle";
 
+// @GET ALL VEHICLES
 const getAllVehicles = async (req: Request, res: Response) => {
   try {
     const page = parseInt((req.query.page as string) || "1");
@@ -27,4 +28,16 @@ const getAllVehicles = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllVehicles };
+// @GET VEHICLE BY ID
+const getVehiclesById = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const vehicle = await Vehicle.findByPk(id);
+    res.status(200).json(vehicle);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+export { getAllVehicles, getVehiclesById };

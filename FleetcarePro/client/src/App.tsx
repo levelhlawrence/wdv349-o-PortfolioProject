@@ -6,11 +6,13 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login.tsx";
 import SignUp from "@/pages/SignUp";
 import Settings from "@/pages/Settings.tsx";
-import NavBar from "@/components/NarBar.tsx";
 import WorkOrders from "@/pages/WorkOrders.tsx";
 import Fleet from "@/pages/Fleet.tsx";
-import WorkOrderDetails from "@/components/WorkOrders/WorkOrderDetails";
+// import components
 import Footer from "./components/Footer";
+import NavBar from "@/components/NarBar.tsx";
+import WorkOrderDetails from "@/components/WorkOrders/WorkOrderDetails";
+import FleetDetails from "@/components/FleetComponents/FleetDetails";
 
 // import context
 import { ApiProvider } from "./components/ApiContext";
@@ -41,7 +43,9 @@ function App() {
         {/* <Route path="/workorders/delete/:id" element={<DeleteWorkOrder />} /> */}
         {/* <Route path="/workorders/print/:id" element={<PrintWorkOrder />} /> */}
         <Route path="calendar" element={<Home />} />
+        {/* Fleet Routes */}
         <Route path="fleet" element={<Fleet />} />
+        <Route path="fleet/:id" element={<FleetDetails />} />
         <Route path="parts" element={<Home />} />
         <Route path="settings" element={<Settings />} />
       </Routes>
