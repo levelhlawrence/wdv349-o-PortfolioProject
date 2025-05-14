@@ -1,11 +1,11 @@
 import express from "express";
+const workOrderRouter = express.Router();
+
 import {
-  getAllWorkOrders,
   createWorkOrders,
+  getAllWorkOrders,
   getWorkOrderById,
 } from "../controllers/workorderController";
-
-const workOrderRouter = express.Router();
 
 // @GET ALL USERS
 workOrderRouter.get("/", getAllWorkOrders);
@@ -16,4 +16,4 @@ workOrderRouter.get("/:id", getWorkOrderById);
 // @POST NEW WORK ORDER
 workOrderRouter.post("/", createWorkOrders);
 
-export default workOrderRouter;
+export { workOrderRouter };

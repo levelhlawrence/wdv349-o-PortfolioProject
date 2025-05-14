@@ -15,9 +15,10 @@ const WorkOrder = sequelize.define("WorkOrder", {
     type: DataTypes.ENUM(
       "open",
       "in progress",
-      "on hold",
+      "awaiting parts",
       "completed",
-      "cancelled"
+      "closed",
+      "created in error"
     ),
     defaultValue: "open",
   },
@@ -46,25 +47,6 @@ const WorkOrder = sequelize.define("WorkOrder", {
   assignedShop: {
     type: DataTypes.STRING,
   },
-});
-
-// Define associations
-WorkOrder.belongsTo(sequelize.models.Vehicle, {
-  foreignKey: {
-    name: "vehicleId",
-    allowNull: false,
-  },
-  as: "vehicle",
-});
-
-WorkOrder.belongsTo(sequelize.models.User, {
-  foreignKey: "technicianId",
-  as: "technician",
-});
-
-WorkOrder.belongsTo(sequelize.models.Facility, {
-  foreignKey: "facilityId",
-  as: "facility",
 });
 
 export default WorkOrder;

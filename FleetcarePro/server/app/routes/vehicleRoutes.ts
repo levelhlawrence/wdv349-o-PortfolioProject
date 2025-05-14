@@ -12,4 +12,4 @@ vehicleRouter.get("/", getAllVehicles);
 // @GET VEHICLE BY ID
 vehicleRouter.get("/:id", getVehiclesById);
 
-export default vehicleRouter;
+export { vehicleRouter };
