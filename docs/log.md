@@ -121,10 +121,6 @@ end, incorporating feedback and refactoring as needed.
 
 🔮 What's Next – I’ll complete the authentication flow, including login validation, password hashing, and JWT-based access. I also plan to protect routes based on auth status and begin adding role-based access control. On the UI side, I’ll enhance the Fleet and Work Order pages to include user-specific data filtering and action feedback.
 
-Got it! Here's a revised **Week 8** update that accurately reflects your actual progress:
-
----
-
 ### Week 8
 
 ⚙️ **Overview** – This week, I made a major backend change by switching the database from MongoDB to PostgreSQL to better align with the app’s data structure and future scalability goals. On the frontend, I built out the Fleet page with React components and began refactoring the codebase for better organization and maintainability. I also spent time identifying and fixing bugs across the app.
