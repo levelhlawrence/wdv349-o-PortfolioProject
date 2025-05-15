@@ -63,9 +63,9 @@ const DisplayVehicles = ({
                   onClick={vehicleDetailsHandler}
                   key={vehicle.bus_no}
                   id={vehicle.bus_no}
-                  className="text-sm hover:bg-emerald-50 hover:cursor-pointer"
+                  className="text-sm hover:bg-emerald-50 "
                 >
-                  <tr className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600">
+                  <tr className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600 hover:cursor-pointer">
                     <td className="py-2 flex items-center gap-2">
                       <IoNewspaperOutline />
                       {vehicle.bus_no}
