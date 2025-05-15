@@ -1,26 +1,26 @@
-import express from "express";
-import {
-  getAllFacilities,
-  createFacility,
-  updateFacility,
-  getFacilityById,
-  deleteFacility,
-} from "../controllers/facilityController";
-const facilityRoutes = express.Router();
+// import express from "express";
+// import {
+//   getAllFacilities,
+//   createFacility,
+//   updateFacility,
+//   getFacilityById,
+//   deleteFacility,
+// } from "../controllers/facilityController";
+// const facilityRoutes = express.Router();
 
-// @GET ALL FACILITIES
-facilityRoutes.get("/", getAllFacilities);
+// // @GET ALL FACILITIES
+// facilityRoutes.get("/", getAllFacilities);
 
-// @GET FACILITY BY ID
-facilityRoutes.get("/:id", getFacilityById);
+// // @GET FACILITY BY ID
+// facilityRoutes.get("/:id", getFacilityById);
 
-// @CREATE FACILITY
-facilityRoutes.post("/", createFacility);
+// // @CREATE FACILITY
+// facilityRoutes.post("/", createFacility);
 
-// @UPDATE FACILITY
-facilityRoutes.put("/:id", updateFacility);
+// // @UPDATE FACILITY
+// facilityRoutes.put("/:id", updateFacility);
 
-// @DELETE FACILITY
-facilityRoutes.delete("/:id", deleteFacility);
+// // @DELETE FACILITY
+// facilityRoutes.delete("/:id", deleteFacility);
 
-export default facilityRoutes;
+// export default facilityRoutes;
