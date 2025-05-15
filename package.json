@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/levelhlawrence/wdv349-o-PortfolioProject/issues"
   },
-  "homepage": "https://github.com/levelhlawrence/wdv349-o-PortfolioProject#readme"
+  "homepage": "https://github.com/levelhlawrence/wdv349-o-PortfolioProject#readme",
+  "dependencies": {
+    "@remix-run/dev": "^2.16.6"
+  }
 }
