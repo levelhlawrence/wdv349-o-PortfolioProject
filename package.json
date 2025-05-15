@@ -1,0 +1,24 @@
+{
+  "name": "wdv349-o-portfolioproject",
+  "version": "1.0.0",
+  "description": "![Degree Program](https://img.shields.io/badge/degree-web%20development-blue.svg)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "cd ./FleetcarePro && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levelhlawrence/wdv349-o-PortfolioProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/levelhlawrence/wdv349-o-PortfolioProject/issues"
+  },
+  "homepage": "https://github.com/levelhlawrence/wdv349-o-PortfolioProject#readme"
+}

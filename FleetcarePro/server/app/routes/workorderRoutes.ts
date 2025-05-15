@@ -1,11 +1,13 @@
 import express from "express";
-import {
-  getAllWorkOrders,
-  createWorkOrders,
-  getWorkOrderById,
-} from "../controllers/workorderController";
-
 const workOrderRouter = express.Router();
+
+import {
+  createWorkOrders,
+  getAllWorkOrders,
+  getWorkOrderById,
+  updateWorkOrder,
+  deleteWorkOrder,
+} from "../controllers/workorderController";
 
 // @GET ALL USERS
 workOrderRouter.get("/", getAllWorkOrders);
@@ -16,4 +18,10 @@ workOrderRouter.get("/:id", getWorkOrderById);
 // @POST NEW WORK ORDER
 workOrderRouter.post("/", createWorkOrders);
 
-export default workOrderRouter;
+// @PUT WORK ORDER
+workOrderRouter.put("/:id", updateWorkOrder);
+
+// @DELETE WORK ORDER
+workOrderRouter.delete("/:id", deleteWorkOrder);
+
+export { workOrderRouter };

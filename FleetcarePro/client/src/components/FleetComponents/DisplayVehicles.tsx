@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const DisplayVehicles = ({
-  vehFilterSelect,
   nextPage,
   prevPage,
   page,
@@ -14,10 +14,18 @@ const DisplayVehicles = ({
   getAllVehicles,
 }) => {
   const pageSizeRef = useRef();
+  const navigate = useNavigate();
 
   // page size selector
   const pageSizeHandeler = () => {
-    setPageSize(pageSizeRef.current.value);
+    setPageSize(pageSizeRef?.current?.value);
+  };
+
+  // redirect to vehicle detail page
+  const vehicleDetailsHandler = (e) => {
+    const id = e.currentTarget.id;
+
+    navigate("./" + id);
   };
 
   useEffect(() => {
@@ -52,10 +60,12 @@ const DisplayVehicles = ({
             {vehicles?.data?.map((vehicle) => {
               return (
                 <tbody
+                  onClick={vehicleDetailsHandler}
                   key={vehicle.bus_no}
-                  className="text-sm hover:bg-emerald-50 hover:cursor-pointer"
+                  id={vehicle.bus_no}
+                  className="text-sm hover:bg-emerald-50 "
                 >
-                  <tr className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600">
+                  <tr className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600 hover:cursor-pointer">
                     <td className="py-2 flex items-center gap-2">
                       <IoNewspaperOutline />
                       {vehicle.bus_no}
