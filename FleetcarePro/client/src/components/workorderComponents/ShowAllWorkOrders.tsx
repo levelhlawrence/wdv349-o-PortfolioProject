@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useApi } from "../../components/ApiContext";
 
 const ShowAllWorkOrders = () => {
@@ -26,7 +26,7 @@ const ShowAllWorkOrders = () => {
           </thead>
           <tbody className="text-sm">
             {allWorkOrders.length > 0 &&
-              allWorkOrders?.map((workorder) => {
+              allWorkOrders?.map((workorder: any) => {
                 return (
                   <tr
                     className="border-b-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600"

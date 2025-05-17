@@ -1,5 +1,3 @@
-import { IoMenuOutline } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa";

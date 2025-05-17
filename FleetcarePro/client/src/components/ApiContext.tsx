@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import axios from "axios";
 
-const dotenv = import.meta.env;
+// Access environment variables directly from import.meta.env
 
 const ApiContext = createContext<any>(null as any);
 type AllVehiclesData = {
@@ -26,10 +26,15 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   // ** <---------- VEHICLE APIS BELOW**** ---------->**
 
   //@GET ALL VEHICLES
-  const getAllVehicles = async (page = 1, pageSize = 10) => {
+  const getAllVehicles = async (
+    page: number = 1,
+    pageSize: number = 10
+  ): Promise<void> => {
     try {
       const response = await axios.get(
-        `${dotenv.VITE_API_URL}/vehicles?page=${page}&limit=${pageSize}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/vehicles?page=${page}&limit=${pageSize}`
       );
       setVehicles(response.data);
       console.log("All vehicles:", response.data);
@@ -39,9 +44,11 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // @GET VEHICLE BY ID
-  const getVehicleById = async (id: string | number) => {
+  const getVehicleById = async (id: string | number): Promise<void> => {
     try {
-      const response = await axios.get(`${dotenv.VITE_API_URL}/vehicles/${id}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/vehicles/${id}`
+      );
       setVehicleDetails(response.data);
     } catch (error) {
       console.error("Error fetching vehicle:", error);
@@ -53,7 +60,9 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   // @GET WORK_ORDER
   const getAllWorkOrders = async () => {
     try {
-      const response = await axios.get(`${dotenv.VITE_API_URL}/workorders`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/workorders`
+      );
       const data = await response.data;
       setAllWorkOrders(data);
     } catch (error) {

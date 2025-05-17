@@ -5,4 +5,3 @@ const server_1 = require("./app/server");
 server_1.app.listen(server_1.PORT, () => {
     console.log(`Server is running on http://localhost:${server_1.PORT}`);
 });
-//# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
 import fleetCareLogo from "../assets/maintLogo1.svg";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { navRoutes } from "../utils/routes";
 import { IoMenuOutline, IoClose } from "react-icons/io5";
 

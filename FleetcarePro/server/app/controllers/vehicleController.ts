@@ -40,4 +40,53 @@ const getVehiclesById = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllVehicles, getVehiclesById };
+// @POST VEHICLE
+const createVehicle = async (req: Request, res: Response) => {
+  try {
+    const vehicle = await Vehicle.create(req.body);
+    res.status(201).json(vehicle);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+// @UPDATE VEHICLE
+const updateVehicle = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const vehicle = await Vehicle.findByPk(id);
+    if (!vehicle) {
+      return res.status(404).json({ message: "Vehicle not found" });
+    }
+    await vehicle.update(req.body);
+    res.status(200).json(vehicle);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+// @DELETE VEHICLE
+const deleteVehicle = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const vehicle = await Vehicle.findByPk(id);
+    if (!vehicle) {
+      return res.status(404).json({ message: "Vehicle not found" });
+    }
+    await vehicle.destroy();
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+export {
+  getAllVehicles,
+  getVehiclesById,
+  createVehicle,
+  updateVehicle,
+  deleteVehicle,
+};
