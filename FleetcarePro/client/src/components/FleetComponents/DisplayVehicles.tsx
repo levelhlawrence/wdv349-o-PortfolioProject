@@ -4,7 +4,22 @@ import { FaArrowLeft } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
-const DisplayVehicles = ({
+interface DisplayVehiclesProps {
+  nextPage: () => void;
+  prevPage: () => void;
+  page: number;
+  pageSize: number;
+  setPageSize: (pageSize: number) => void;
+  vehicles: {
+    totalItems: number;
+    currentPage: number;
+    totalPages: number;
+    data: any[];
+  };
+  getAllVehicles: (page: number, pageSize: number) => void;
+}
+
+const DisplayVehicles: React.FC<DisplayVehiclesProps> = ({
   nextPage,
   prevPage,
   page,
@@ -13,16 +28,19 @@ const DisplayVehicles = ({
   vehicles,
   getAllVehicles,
 }) => {
-  const pageSizeRef = useRef();
+  const pageSizeRef = useRef(null);
   const navigate = useNavigate();
 
   // page size selector
-  const pageSizeHandeler = () => {
-    setPageSize(pageSizeRef?.current?.value);
+  const pageSizeHandler = () => {
+    const value = (pageSizeRef.current as HTMLSelectElement | null)?.value;
+    if (value) {
+      setPageSize(Number(value));
+    }
   };
 
   // redirect to vehicle detail page
-  const vehicleDetailsHandler = (e) => {
+  const vehicleDetailsHandler = (e: any) => {
     const id = e.currentTarget.id;
 
     navigate("./" + id);
@@ -57,7 +75,7 @@ const DisplayVehicles = ({
                 <th className="rounded-tr">Year</th>
               </tr>
             </thead>
-            {vehicles?.data?.map((vehicle) => {
+            {vehicles?.data?.map((vehicle: any) => {
               return (
                 <tbody
                   onClick={vehicleDetailsHandler}
@@ -86,7 +104,7 @@ const DisplayVehicles = ({
             <div className="flex items-center text-sm">
               <p>Items Per Page:</p>
               <select
-                onChange={pageSizeHandeler}
+                onChange={pageSizeHandler}
                 className="border-2 ml-2 w-16 rounded"
                 ref={pageSizeRef}
                 name="page-items"

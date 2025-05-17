@@ -3,14 +3,14 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 // importing pages
 import Home from "@/pages/Home";
-import Login from "@/pages/Login.tsx";
+import Login from "@/pages/Login";
 import SignUp from "@/pages/SignUp";
-import Settings from "@/pages/Settings.tsx";
-import WorkOrders from "@/pages/WorkOrders.tsx";
-import Fleet from "@/pages/Fleet.tsx";
+import Settings from "@/pages/Settings";
+import WorkOrders from "@/pages/WorkOrders";
+import Fleet from "./pages/Fleet";
 // import components
 import Footer from "./components/Footer";
-import NavBar from "@/components/NarBar.tsx";
+import NavBar from "./components/NarBar";
 import FleetDetails from "@/components/FleetComponents/FleetDetails";
 
 // import context
