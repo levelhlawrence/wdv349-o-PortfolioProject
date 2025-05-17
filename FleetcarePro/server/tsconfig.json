@@ -1,17 +1,13 @@
 {
   "compilerOptions": {
-    /* - - Base Options - - */
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-
-    /* - - Node Options - - */
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "outDir": "dist",
-    "sourceMap": true,
-    "lib": ["es2022"]
-  }
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
