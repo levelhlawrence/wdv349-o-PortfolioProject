@@ -1,37 +1,32 @@
-services:
-  postgres:
-    image: postgres:16
-    restart: always
-    environment:
-      POSTGRES_USER: levellawrence
-      POSTGRES_PASSWORD: But76100
-      POSTGRES_DB: fleetcarepro
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+version: "3.9"
 
-  backend:
+services:
+  server:
     build:
       context: ./server
-    depends_on:
-      - postgres
-    environment:
-      DB_HOST: postgres
-      DB_USER: levellawrence
-      DB_PASSWORD: But76100@@
-      DB_NAME: fleetcarepro
-      PORT: 3000
+      dockerfile: Dockerfile
+    container_name: fleetcare-backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run build && npm start
 
-  frontend:
+  client:
     build:
       context: ./client
-    depends_on:
-      - backend
+      dockerfile: Dockerfile
+    container_name: fleetcare-frontend
     ports:
       - "5173:5173"
-
-volumes:
-  pgdata:
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run start
+    depends_on:
+      - server

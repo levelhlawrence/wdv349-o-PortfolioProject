@@ -1,14 +1,15 @@
-FROM node:20 AS builder
+# Dockerfile in server/
+FROM node:18
+
 WORKDIR /app
+
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY ./src ./src
 RUN npm install
+
+COPY . .
+
 RUN npm run build
 
-FROM node:20
-WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY package*.json ./
-RUN npm install --omit=dev
-CMD ["node", "dist/index.js"]
+EXPOSE 3000
+
+CMD ["npm", "start"]
