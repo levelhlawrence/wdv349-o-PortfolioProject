@@ -12,7 +12,7 @@ import { workOrderRouter } from "./routes/workorderRoutes";
 
 // Setup
 const app: express.Express = express();
-const PORT: number = Number(process.env.PORT);
+const PORT: number = Number(process.env.PORT) || 3000;
 
 // Middleware
 app.use(cors());
