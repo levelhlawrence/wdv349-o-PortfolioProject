@@ -38,6 +38,7 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
       );
       setVehicles(response.data);
       console.log("All vehicles:", response.data);
+      return;
     } catch (error) {
       console.error("Error fetching vehicles:", error);
     }
@@ -49,7 +50,8 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/vehicles/${id}`
       );
-      setVehicleDetails(response.data);
+      const data = await response.data;
+      setVehicleDetails(data);
     } catch (error) {
       console.error("Error fetching vehicle:", error);
     }

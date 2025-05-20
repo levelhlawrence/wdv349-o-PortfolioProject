@@ -16,8 +16,8 @@ const FleetDetails = () => {
   };
 
   useEffect(() => {
-    if (id) getVehicleById(id);
-  }, [id, getVehicleById]);
+    getVehicleById(id);
+  }, []);
 
   if (!vehicleDetails) return <p className="pt-4 md:ml-64">Loading...</p>;
 

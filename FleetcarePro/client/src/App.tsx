@@ -29,17 +29,19 @@ function App() {
       {!hideNavBar && isLoggedIn && <NavBar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* auth routes */}
+        {/* Auth Routes */}
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        {/* work order routes */}
+        {/* Work Order Routes */}
         <Route path="workorders" element={<WorkOrders />} />
 
         <Route path="calendar" element={<Home />} />
         {/* Fleet Routes */}
         <Route path="fleet" element={<Fleet />} />
         <Route path="fleet/:id" element={<FleetDetails />} />
+        {/* Parts Routes */}
         <Route path="parts" element={<Home />} />
+        {/* Settings Routes */}
         <Route path="settings" element={<Settings />} />
       </Routes>
       {!hideNavBar && <Footer />}
