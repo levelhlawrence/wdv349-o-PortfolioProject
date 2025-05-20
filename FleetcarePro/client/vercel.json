@@ -7,6 +7,10 @@
     {
       "src": "/workorders",
       "dest": "/"
+    },
+    {
+      "src": "/calendar",
+      "dest": "/"
     }
   ]
 }
