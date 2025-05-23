@@ -3,8 +3,7 @@ import {
   getAllVehicles,
   getVehiclesById,
   createVehicle,
-  updateVehicle,
-  deleteVehicle,
+  updateVehicleById,
 } from "../controllers/vehicleController";
 
 const vehicleRouter = express.Router();
@@ -18,10 +17,10 @@ vehicleRouter.get("/:id", getVehiclesById);
 // @POST VEHICLE
 vehicleRouter.post("/", createVehicle);
 
-// // @UPDATE VEHICLE
-// vehicleRouter.put("/:id", updateVehicle);
+// @UPDATE VEHICLE BY ID
+vehicleRouter.put("/:id", updateVehicleById);
 
-// // @DELETE VEHICLE
+// @DELETE VEHICLE
 // vehicleRouter.delete("/:id", deleteVehicle);
 
 export { vehicleRouter };
