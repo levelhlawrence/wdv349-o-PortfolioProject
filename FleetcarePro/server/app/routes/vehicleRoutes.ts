@@ -4,6 +4,7 @@ import {
   getVehiclesById,
   createVehicle,
   updateVehicleById,
+  deleteVehicle,
 } from "../controllers/vehicleController";
 
 const vehicleRouter = express.Router();
@@ -21,6 +22,6 @@ vehicleRouter.post("/", createVehicle);
 vehicleRouter.put("/:id", updateVehicleById);
 
 // @DELETE VEHICLE
-// vehicleRouter.delete("/:id", deleteVehicle);
+vehicleRouter.delete("/:id", deleteVehicle);
 
 export { vehicleRouter };
