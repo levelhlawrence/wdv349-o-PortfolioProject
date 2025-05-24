@@ -56,12 +56,11 @@ const updateVehicleById = async (req: Request, res: Response) => {
   try {
     const bus_no = await req.params.id;
     const vehiclePayload = req.body;
-    // const updatedVehicle = await Vehicle.update(
-    //   { ...vehiclePayload },
-    //   { where: { bus_no: bus_no } }
-    // );
+    const updatedVehicle = await Vehicle.update(vehiclePayload, {
+      where: { bus_no: bus_no },
+    });
 
-    res.status(200).json(bus_no);
+    res.status(200).json(updatedVehicle);
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
     console.log(error);
@@ -72,13 +71,7 @@ const updateVehicleById = async (req: Request, res: Response) => {
 const deleteVehicle = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const vehicle = await Vehicle.findByPk(id);
-
-    if (!vehicle) {
-      return res.status(404).json({ message: "Vehicle not found" });
-    }
-
-    await vehicle.destroy();
+    await Vehicle.destroy({ where: { bus_no: id } });
     res.status(204).json({ message: `Vehicle: ${id} deleted successfully` });
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
@@ -86,4 +79,10 @@ const deleteVehicle = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllVehicles, getVehiclesById, createVehicle, updateVehicleById };
+export {
+  getAllVehicles,
+  getVehiclesById,
+  createVehicle,
+  updateVehicleById,
+  deleteVehicle,
+};

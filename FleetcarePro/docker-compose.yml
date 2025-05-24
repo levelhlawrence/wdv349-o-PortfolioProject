@@ -1,32 +1,58 @@
-version: "3.9"
-
 services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile
     container_name: fleetcare-backend
     ports:
       - "3000:3000"
     volumes:
       - ./server:/app
-      - /app/node_modules
+      - server_node_modules:/app/node_modules
     environment:
       - NODE_ENV=development
-    command: npm run build && npm start
+      - DATABASE_URL=postgres://testuser:testpass@db:5432/testdb
+    command: npm run dev
+    depends_on:
+      - db
+    networks:
+      - fleetcare
 
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile
     container_name: fleetcare-frontend
     ports:
       - "5173:5173"
     volumes:
       - ./client:/app
-      - /app/node_modules
+      - client_node_modules:/app/node_modules
     environment:
       - NODE_ENV=development
-    command: npm run start
+    command: npm run dev -- --host
     depends_on:
       - server
+    networks:
+      - fleetcare
+
+  db:
+    image: postgres:17.5
+    container_name: fleetcare-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: testdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fleetcare
+
+volumes:
+  server_node_modules:
+  client_node_modules:
+  postgres_data:
+
+networks:
+  fleetcare:
+    driver: bridge
