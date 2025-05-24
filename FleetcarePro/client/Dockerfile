@@ -1,7 +1,7 @@
-# Dockerfile in client/
-FROM node:18
+# client/Dockerfile
+FROM node:23
 
-WORKDIR /
+WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5173
 
-CMD ["npm", "run","start"]
+CMD ["npm", "run", "dev", "--", "--host"]

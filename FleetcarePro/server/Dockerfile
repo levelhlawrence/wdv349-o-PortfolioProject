@@ -1,15 +1,18 @@
-# Dockerfile in server/
-FROM node:18
+# server/Dockerfile
+FROM node:23
 
-WORKDIR /
+WORKDIR /app
 
+# Install dependencies first
 COPY package*.json ./
 RUN npm install
 
+# Copy source files
 COPY . .
 
-RUN npm run build
+# Use ts-node-dev for live reload
+RUN npm install --save-dev ts-node-dev
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
