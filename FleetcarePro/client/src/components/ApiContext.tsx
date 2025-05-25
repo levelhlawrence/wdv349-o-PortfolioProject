@@ -37,7 +37,6 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
         }/vehicles?page=${page}&limit=${pageSize}`
       );
       setVehicles(response.data);
-      console.log("All vehicles:", response.data);
       return;
     } catch (error) {
       console.error("Error fetching vehicles:", error);

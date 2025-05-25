@@ -28,7 +28,6 @@ export function AddVehicle() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       const response = await axios.post(
@@ -38,7 +37,6 @@ export function AddVehicle() {
       alert("Vehicle added successfully!");
       setFormData({});
     } catch (err) {
-      console.error("Submission error:", err);
       alert("Failed to add vehicle.");
     }
   };

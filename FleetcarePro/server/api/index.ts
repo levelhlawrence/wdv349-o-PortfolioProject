@@ -19,9 +19,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+const allowedOrigins = [
+  "https://fleetcare-frontend.onrender.com",
+  "http://localhost:5174",
+];
+
 app.use(
   cors({
-    origin: "https://fleetcare-frontend.onrender.com",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
