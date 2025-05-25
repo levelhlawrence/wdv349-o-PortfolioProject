@@ -7,7 +7,10 @@ import Login from "@/pages/Login";
 import SignUp from "@/pages/SignUp";
 import Settings from "@/pages/Settings";
 import WorkOrders from "@/pages/WorkOrders";
-import Fleet from "./pages/Fleet";
+import Fleet from "@/pages/Fleet";
+import Parts from "@/pages/Parts";
+import Work from "@/pages/Work";
+import Calendar from "@/pages/Calendar";
 // import components
 import Footer from "./components/Footer";
 import NavBar from "./components/NarBar";
@@ -34,13 +37,15 @@ function App() {
         <Route path="signup" element={<SignUp />} />
         {/* Work Order Routes */}
         <Route path="workorders" element={<WorkOrders />} />
-
-        <Route path="calendar" element={<Home />} />
         {/* Fleet Routes */}
         <Route path="fleet" element={<Fleet />} />
         <Route path="fleet/:id" element={<FleetDetails />} />
+        {/* Calendar */}
+        <Route path="calendar" element={<Calendar />} />
+        {/* Work Routes */}
+        <Route path="work" element={<Work />} />
         {/* Parts Routes */}
-        <Route path="parts" element={<Home />} />
+        <Route path="parts" element={<Parts />} />
         {/* Settings Routes */}
         <Route path="settings" element={<Settings />} />
       </Routes>
