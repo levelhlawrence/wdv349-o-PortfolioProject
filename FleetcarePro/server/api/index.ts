@@ -20,10 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// <---------- Database Connection -----------> //
 
 sequelize.sync({ force: false }).then(() => {
   console.log("Database connected");
@@ -39,8 +43,6 @@ app.use("/api_v1/vehicles", vehicleRouter);
 app.get("/", (req: Request, res: Response) => {
   res.send("<h1>Hello, World!</h1>");
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
