@@ -22,7 +22,7 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: "https://fleetcare-frontend.onrender.com/",
+    origin: "https://fleetcare-frontend.onrender.com",
     credentials: true,
   })
 );
