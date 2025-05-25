@@ -15,7 +15,6 @@ const app: express.Express = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 
 // <---------- Middleware -----------> //
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
