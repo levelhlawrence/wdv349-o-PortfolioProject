@@ -8,7 +8,7 @@ import { Button } from "../components/ui/button";
 export default function LoginForm() {
   return (
     <section className="flex justify-between">
-      <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none">
+      <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none md:w-full">
         {/* Form Section */}
         <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10">
           <h2 className="text-3xl font-bold mb-8">Login Form</h2>
@@ -29,14 +29,14 @@ export default function LoginForm() {
       </aside>
       {/* background image section*/}
       <div className="bg-gradient-to-t from-emerald-600 to-emerald-400 h-screen w-full md:relative z-10 flex flex-col justify-between overflow-hidden">
-        <div className=" flex flex-row-reverse justify-center items-center mt-10">
-          <h1 className=" drop-shadow-sm text-white z-20 relative text-center md:mt-10 text-4xl font-bold">
+        <div className=" flex flex-row-reverse justify-center items-center mt-10 md:flex-col md:justify-between md:h-[60%]">
+          <h1 className=" drop-shadow-sm text-white z-20 relative text-center md:mt-10 text-4xl font-bold ">
             Fleet<span className="font-light">Care</span> Pro
           </h1>
           <div className="z-20 relative ">
             <img
               id="bus-logo"
-              className="drop-shadow-md w-20 mr-4"
+              className="drop-shadow-md w-20 mr-4 md:w-64 "
               src={maintLogo1}
               alt="fleet care pro logo"
             />
