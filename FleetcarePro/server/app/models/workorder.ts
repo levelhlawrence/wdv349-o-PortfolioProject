@@ -1,68 +1,76 @@
-import { Schema, model } from "mongoose";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../database/database";
 
-const workOrderSchema = new Schema(
+const WorkOrder = sequelize.define(
+  "work_orders",
   {
     workOrderNumber: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+      allowNull: false,
       unique: true,
     },
-    vehicle: {
-      type: Schema.Types.ObjectId,
-      ref: "Vehicle",
-      required: true,
-    },
     issueReported: {
-      type: String,
-      required: true,
-    },
-    technician: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     status: {
-      type: String,
-      enum: ["open", "in progress", "on hold", "completed", "cancelled"],
-      default: "open",
+      type: DataTypes.ENUM(
+        "open",
+        "in progress",
+        "awaiting parts",
+        "completed",
+        "closed",
+        "created in error"
+      ),
+      defaultValue: "open",
     },
     priority: {
-      type: String,
-      enum: ["low", "medium", "high", "urgent"],
-      default: "medium",
+      type: DataTypes.ENUM("low", "medium", "high", "urgent"),
+      defaultValue: "medium",
+      allowNull: false,
     },
     laborHours: {
-      type: Number,
-      default: 0,
+      type: DataTypes.DECIMAL(6, 2),
+      defaultValue: 0,
+      allowNull: true,
     },
-    partsUsed: [
-      {
-        partName: String,
-        quantity: Number,
-        unitCost: Number,
-      },
-    ],
     otherCharges: {
-      type: Number,
-      default: 0,
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0,
+      allowNull: true,
     },
-    notes: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
+    notes: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
-    completedAt: Date,
+    completedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     totalCost: {
-      type: Number,
-      default: 0,
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0,
+      allowNull: true,
     },
-    assignedShop: String,
-    facility: {
-      type: Schema.Types.ObjectId,
-      ref: "Facility",
+    assignedShop: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
-  { collection: "WorkOrders" }
+  {
+    timestamps: true,
+    freezeTableName: true,
+  }
 );
 
-const WorkOrder = model("WorkOrder", workOrderSchema);
 export default WorkOrder;

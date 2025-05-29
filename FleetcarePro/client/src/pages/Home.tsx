@@ -1,23 +1,48 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <section className="relative md:ml-64">
-      <header>
-        <h1 className="pl-8 py-5 text-2xl font font-bold text-gray-500 border-b-2">
-          Home
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-6 py-20 text-center text-gray-900">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-emerald-600">
+          Fleetcare Pro
         </h1>
-        <p className="pl-8 mt-2 text-gray-500"> Welcome Admin </p>
-      </header>
 
-      {/* dashboard */}
-      <div className="flex flex-col md:flex-row justify-between items-center mt-8 mx-8">
-        <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-1/2 mr-4">
-          <h2 className="text-xl font-bold mb-4">Dashboard</h2>
-          <p className="text-gray-600">- Open worker orders.</p>
-          <p className="text-gray-600">- Employees clocked in.</p>
-        </div>
-        <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-1/2 ml-4">
-          <h2 className="text-xl font-bold mb-4">Notifications</h2>
-          <p className="text-gray-600">Latest updates and alerts.</p>
+        <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mb-8">
+          Track your fleet. Streamline repairs. Reduce downtime. All from one
+          smart dashboard.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-20 w-full max-w-6xl">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-2 text-emerald-600">
+              Vehicle Management
+            </h2>
+            <p className="text-gray-600">
+              Monitor vehicle details, maintenance history, and status in one
+              view.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-2 text-emerald-600">
+              Work Order Tracking
+            </h2>
+            <p className="text-gray-600">
+              Create and manage repair tasks with real-time updates and history
+              logs.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-2 text-emerald-600">
+              Smart Notifications
+            </h2>
+            <p className="text-gray-600">
+              Get notified of upcoming services and critical issues before they
+              cost you.
+            </p>
+          </div>
         </div>
       </div>
     </section>

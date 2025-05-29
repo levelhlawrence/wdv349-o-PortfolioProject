@@ -120,3 +120,13 @@ end, incorporating feedback and refactoring as needed.
 🏆 Accomplishments – I made solid progress on the authentication structure and now have the context provider in place to manage state globally. The Fleet and Work Order pages are live and accessible through proper routing. My research gave me a better understanding of how to approach frontend and backend security with tools like JWT, bcrypt, and HTTPS protocols.
 
 🔮 What's Next – I’ll complete the authentication flow, including login validation, password hashing, and JWT-based access. I also plan to protect routes based on auth status and begin adding role-based access control. On the UI side, I’ll enhance the Fleet and Work Order pages to include user-specific data filtering and action feedback.
+
+### Week 8
+
+⚙️ **Overview** – This week, I made a major backend change by switching the database from MongoDB to PostgreSQL to better align with the app’s data structure and future scalability goals. On the frontend, I built out the Fleet page with React components and began refactoring the codebase for better organization and maintainability. I also spent time identifying and fixing bugs across the app.
+
+🌵 **Challenges** – Migrating to PostgreSQL required restructuring some of the data models and adjusting API routes to support SQL queries. Refactoring while still actively developing introduced a few temporary breaking changes that had to be debugged. Getting everything synced between frontend and backend took careful testing.
+
+🏆 **Accomplishments** – The PostgreSQL setup is now functional and integrated with the app’s backend. The Fleet page is live with modular components, and the overall codebase is cleaner thanks to the ongoing refactor. Several bugs were resolved, improving both stability and performance.
+
+🔮 **What's Next** – I’ll continue the refactoring process and update the remaining API endpoints for PostgreSQL. Next, I plan to enhance the Fleet page with interactive features like filters and status indicators. I’ll also begin planning the database schema for upcoming features like user roles and work order tracking.
