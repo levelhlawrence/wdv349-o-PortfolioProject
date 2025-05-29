@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // Access environment variables directly from import.meta.env
 
@@ -22,6 +23,7 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   const [allWorkOrders, setAllWorkOrders] = useState({});
   const [vehicles, setVehicles] = useState<AllVehiclesData | null>(null);
   const [vehicleDetails, setVehicleDetails] = useState(null);
+  const navigate = useNavigate();
 
   // ** <---------- VEHICLE APIS BELOW**** ---------->**
 
@@ -34,7 +36,8 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
       const response = await axios.get(
         `${
           import.meta.env.VITE_API_URL
-        }/vehicles?page=${page}&limit=${pageSize}`
+        }/vehicles?page=${page}&limit=${pageSize}`,
+        { withCredentials: true }
       );
       setVehicles(response.data);
       return;
@@ -47,7 +50,8 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   const getVehicleById = async (id: string | number): Promise<void> => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/vehicles/${id}`
+        `${import.meta.env.VITE_API_URL}/vehicles/${id}`,
+        { withCredentials: true }
       );
       const data = await response.data;
       setVehicleDetails(data);
@@ -62,7 +66,8 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   const getAllWorkOrders = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/workorders`
+        `${import.meta.env.VITE_API_URL}/workorders`,
+        { withCredentials: true }
       );
       const data = await response.data;
       setAllWorkOrders(data);
@@ -77,12 +82,45 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
 
   // @DELETE WORK_ORDER
 
+  // ** <---------- AUTH APIS BELOW ----------> **
+  // @POST LOGIN
+  const loginUser = async (formData) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        formData,
+        { withCredentials: true }
+      );
+      navigate("/");
+      return response.data;
+    } catch (error) {
+      console.error("Error logging in:", error);
+      throw error;
+    }
+  };
+
+  // @POST REGISTER
+  // @POST LOGOUT
+  const logout = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/logout`
+      );
+      navigate("login");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ApiContext.Provider
       value={{
         getAllVehicles,
         getVehicleById,
         getAllWorkOrders,
+        loginUser,
+        logout,
         allWorkOrders,
         vehicles,
         vehicleDetails,

@@ -9,16 +9,16 @@ import {
 
 const vehicleRouter = express.Router();
 
-// @GET ALL USERS
+// @GET ALL VEHICLES
 vehicleRouter.get("/", getAllVehicles);
 
 // @GET VEHICLE BY ID
 vehicleRouter.get("/:id", getVehiclesById);
 
-// @POST VEHICLE
+// @POST CREATE VEHICLE
 vehicleRouter.post("/", createVehicle);
 
-// @UPDATE VEHICLE BY ID
+// @PUT UPDATE VEHICLE
 vehicleRouter.put("/:id", updateVehicleById);
 
 // @DELETE VEHICLE

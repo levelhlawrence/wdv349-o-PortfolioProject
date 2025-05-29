@@ -1,16 +1,6 @@
 import { Request, Response } from "express";
 import WorkOrder from "../models/workorder";
 
-// Helper function to get formatted date
-// function getFormattedDate() {
-//   const date = new Date();
-//   return {
-//     year: date.getFullYear(),
-//     month: (date.getMonth() + 1).toString().padStart(2, "0"),
-//     day: date.getDate().toString().padStart(2, "0"),
-//   };
-// }
-
 // @GET ALL WORK ORDERS
 const getAllWorkOrders = async (req: Request, res: Response) => {
   try {
