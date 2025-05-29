@@ -1,27 +1,47 @@
+import { useState } from "react";
 // importing components
 import busesBgImg from "../assets/images/login_images/main_schoolbuses.jpg";
 import maintLogo1 from "../assets/maintLogo1.svg";
 // shadcn ui
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import { useApi } from "@/components/ApiContext";
 
 export default function LoginForm() {
+  const { loginUser } = useApi();
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginUser(loginData);
+    console.log("Login Data Submitted:", loginData);
+  };
+
   return (
     <section className="flex justify-between">
       <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none md:w-full">
         {/* Form Section */}
         <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10">
           <h2 className="text-3xl font-bold mb-8">Login Form</h2>
-          <form className="flex flex-col w-full">
-            <label className="text-sm" htmlFor="username">
-              Username
+          <form onChange={handleInputChange} className="flex flex-col w-full">
+            <label className="text-sm" htmlFor="email">
+              Email
             </label>
-            <Input id="username" type="text" />
-            <label className="mt-8 text-sm" htmlFor="pw-key">
+            <Input id="email" type="email" name="email" />
+            <label className="mt-8 text-sm" htmlFor="password">
               Password
             </label>
-            <Input id="pw-key" type="password" />
-            <Button type="submit" className="w-fit mt-6">
+            <Input id="password" type="password" name="password" />
+            <Button onClick={handleSubmit} type="submit" className="w-fit mt-6">
               Submit
             </Button>
           </form>
