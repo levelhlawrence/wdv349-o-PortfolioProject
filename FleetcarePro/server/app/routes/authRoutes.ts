@@ -10,6 +10,7 @@ import {
 const router = Router();
 
 router.post("/register", registerUser);
+// @ts-ignore
 router.post("/login", passport.authenticate("local"), loginUser);
 router.post("/logout", logoutUser);
 // @ts-ignore

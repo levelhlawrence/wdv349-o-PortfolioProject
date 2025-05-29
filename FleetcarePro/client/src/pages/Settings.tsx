@@ -8,6 +8,7 @@ export default function Settings() {
   const logoutHandler = async () => {
     await logout();
     navigate(`/login`);
+    alert("Logout successful");
   };
 
   return (
