@@ -20,7 +20,6 @@ const PORT: number = Number(process.env.PORT) || 3000;
 const allowedOrigins = [
   "https://fleetcare-frontend.onrender.com",
   "http://localhost:5173",
-  "http://localhost:3000",
 ];
 
 app.use(
@@ -43,9 +42,10 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
     },
   })
 );
