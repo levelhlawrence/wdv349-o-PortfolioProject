@@ -21,23 +21,31 @@ const allowedOrigins = [
   "https://fleetcare-frontend.onrender.com",
   "http://localhost:5173",
 ];
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(
   session({
+    name: "connect.sid",
     secret: process.env.SECRET as string,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
     },
   })
 );

@@ -28,12 +28,12 @@ const loginUser = (_req: Request, res: Response) => {
 
 // @[Post] /api_v1/auth/logout
 // controllers/authController.ts
-const logoutUser = (req: Request, res: Response) => {
-  req.logout(() => {
-    req.session?.destroy(() => {
-      res.clearCookie("connect.sid");
-      res.status(200).json({ message: "Logged out" });
-    });
+const logoutUser = async (req: Request, res: Response, next: NextFunction) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
   });
 };
 

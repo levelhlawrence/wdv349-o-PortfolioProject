@@ -100,16 +100,17 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // @POST REGISTER
+
   // @POST LOGOUT
   const logout = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/logout`
+        `${import.meta.env.VITE_API_URL}/auth/logout`,
+        {},
+        { withCredentials: true }
       );
-      navigate("login");
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
