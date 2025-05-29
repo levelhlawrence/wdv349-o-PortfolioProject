@@ -46,7 +46,7 @@ function App() {
     };
 
     checkAuth();
-  }, []);
+  }, [isLoggedIn]);
 
   const hideNavBar = location.pathname === "/login";
 

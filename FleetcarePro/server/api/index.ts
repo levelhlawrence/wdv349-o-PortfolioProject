@@ -20,17 +20,25 @@ const PORT: number = Number(process.env.PORT) || 3000;
 const allowedOrigins = [
   "https://fleetcare-frontend.onrender.com",
   "http://localhost:5173",
+  "http://localhost:3000",
 ];
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(
   session({
+    name: "connect.sid",
     secret: process.env.SECRET as string,
     resave: false,
     saveUninitialized: false,

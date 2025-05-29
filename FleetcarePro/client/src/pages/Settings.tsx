@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useApi } from "@/components/ApiContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Settings() {
+  const navigate = useNavigate();
   const { logout } = useApi();
-  const handleLogout = async () => {
+  const logoutHandler = async () => {
     await logout();
+    navigate(`/login`);
   };
 
   return (
@@ -14,7 +17,7 @@ export default function Settings() {
           Settings
         </h1>
         <div>
-          <Button onClick={logout}>Logout</Button>
+          <Button onClick={logoutHandler}>Logout</Button>
         </div>
         <input
           className="border rounded-xl mt-8 border-emerald-600"

@@ -20,8 +20,14 @@ export default function LoginForm() {
     setLoginData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!loginData.email || !loginData.password) {
+      alert("Both fields are required.");
+      return;
+    }
+
     loginUser(loginData);
     console.log("Login Data Submitted:", loginData);
   };
@@ -36,11 +42,11 @@ export default function LoginForm() {
             <label className="text-sm" htmlFor="email">
               Email
             </label>
-            <Input id="email" type="email" name="email" />
+            <Input id="email" type="email" name="email" required />
             <label className="mt-8 text-sm" htmlFor="password">
               Password
             </label>
-            <Input id="password" type="password" name="password" />
+            <Input id="password" type="password" name="password" required />
             <Button onClick={handleSubmit} type="submit" className="w-fit mt-6">
               Submit
             </Button>
