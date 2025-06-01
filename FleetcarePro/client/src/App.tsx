@@ -52,15 +52,23 @@ function App() {
       <NavBar />
 
       <Routes>
+        {/* Home */}
         <Route path="/" element={<Home />} />
+        {/* Auth */}
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        {/* Work Orders */}
         <Route path="workorders" element={<WorkOrders />} />
+        {/* Fleet */}
         <Route path="fleet" element={<Fleet />} />
         <Route path="fleet/:id" element={<FleetDetails />} />
+        {/* Calendar */}
         <Route path="calendar" element={<Calendar />} />
+        {/* Work */}
         <Route path="work" element={<Work />} />
+        {/* Parts */}
         <Route path="parts" element={<Parts />} />
+        {/* Settings */}
         <Route path="settings" element={<Settings />} />
       </Routes>
 
