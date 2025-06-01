@@ -22,39 +22,34 @@ import FleetDetails from "@/components/FleetComponents/FleetDetails";
 import { ApiProvider } from "./components/ApiContext";
 
 function App() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null); // null = loading
+  const [user, setUser] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const checkAuth = async () => {
+    const restoreSession = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/auth/check`,
-          { withCredentials: true }
+          `${import.meta.env.ITE_API_URL}/auth/check`,
+          {
+            withCredentials: true,
+          }
         );
-        if (res.data.isAuthenticated) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-          navigate("/login");
-        }
+        setUser(res.data.user);
+        setIsLoggedIn(true);
+        console.log(user);
       } catch {
         setIsLoggedIn(false);
-        navigate("/login");
       }
     };
 
-    checkAuth();
-  }, [isLoggedIn]);
-
-  const hideNavBar = location.pathname === "/login";
+    restoreSession();
+  }, []);
 
   if (isLoggedIn === null) return <p>Loading...</p>;
 
   return (
     <ApiProvider>
-      {!hideNavBar && isLoggedIn && <NavBar />}
+      <NavBar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -69,7 +64,7 @@ function App() {
         <Route path="settings" element={<Settings />} />
       </Routes>
 
-      {!hideNavBar && <Footer />}
+      <Footer />
     </ApiProvider>
   );
 }

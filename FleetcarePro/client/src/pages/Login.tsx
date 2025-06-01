@@ -33,7 +33,7 @@ export default function LoginForm() {
   };
 
   return (
-    <section className="flex justify-between">
+    <section className="flex justify-between absolute right-0 left-0 z-50 top-0 bg-white">
       <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none md:w-full">
         {/* Form Section */}
         <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10">
@@ -72,11 +72,13 @@ export default function LoginForm() {
           CCPS{" "}
           <span className="font-light text-sm">Closed Beta &copy;2025</span>
         </p>
-        <img
-          className="z-10 absolute blur-[1px] object-cover bottom-0 top-0 left-0 right-0 h-full w-full opacity-50 brightness-50"
-          src={busesBgImg}
-          alt="fleet of buses"
-        />
+        <div>
+          <img
+            className="z-10 absolute blur-[1px] object-cover bottom-0 top-0 left-0 right-0 h-full w-full brightness-50"
+            src={busesBgImg}
+            alt="fleet of buses"
+          />
+        </div>
       </div>
     </section>
   );
