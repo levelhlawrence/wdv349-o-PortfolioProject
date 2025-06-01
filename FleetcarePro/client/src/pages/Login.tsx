@@ -37,7 +37,7 @@ export default function LoginForm() {
       <aside className="flex flex-col left-0 right-0 mx-auto w-fit bottom-1/2 top-1/2 justify-center items-center z-50 absolute md:relative shadow-lg md:shadow-none md:w-full">
         {/* Form Section */}
         <div className="max-w-1/2 bg-white rounded-lg shadow-md md:shadow-none p-10">
-          <h2 className="text-3xl font-bold mb-8">Login Form</h2>
+          <h2 className="text-3xl font-bold mb-8">Login</h2>
           <form onChange={handleInputChange} className="flex flex-col w-full">
             <label className="text-sm" htmlFor="email">
               Email
