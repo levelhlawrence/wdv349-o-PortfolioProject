@@ -1,69 +1,75 @@
 ![Degree Program](https://img.shields.io/badge/degree-web%20development-blue.svg)
 
-<br>
-
 # 🚐 FleetCarePro
 
-FleetCarePro is a streamlined fleet maintenance management application designed to help municipalities, government agencies, and small fleet operators (up to 1,500 vehicles) efficiently manage vehicle maintenance records, work orders, and service history.
+**FleetCarePro** is a fleet maintenance management web app built for municipalities, school systems, and private operators managing up to 1,500 vehicles. It centralizes maintenance scheduling, work orders, and service history into one clean, user-friendly dashboard.
 
 ---
 
 ## 📌 Purpose
 
-FleetCarePro simplifies the task of maintaining a fleet of vehicles by offering a centralized platform for:
+FleetCarePro helps reduce downtime and streamline operations with features for:
 
 - Creating and managing **work orders**
 - Tracking **vehicle service history**
-- Monitoring **maintenance schedules**
-- Managing **fleet size**, big or small — with a focus on government and local transit needs
+- Monitoring **preventive maintenance schedules**
+- Supporting small to mid-sized **government and transit fleets**
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Layer            | Technology              |
-| ---------------- | ----------------------- |
-| Backend          | Node.js with TypeScript |
-| Frontend         | React.js                |
-| Database         | PostgreSQL              |
-| API Testing      | Postman                 |
-| Environment Vars | `dotenv`                |
+| Layer            | Technology           |
+| ---------------- | -------------------- |
+| Backend          | Node.js + TypeScript |
+| Frontend         | React.js (Vite)      |
+| Database         | PostgreSQL           |
+| API Testing      | Postman              |
+| Environment Vars | `dotenv`             |
 
 ---
 
 ## 🧠 Features
 
-- ✅ **Work Order Management**: Create, update, and close work orders for any vehicle.
-- 🔄 **Service History Tracking**: Every vehicle has a detailed log of completed work.
-- 📊 **Pagination Support**: Easily navigate through large lists of vehicles or work orders.
-- 🧾 **Scalable Database**: PostgreSQL-backed relational schema designed for performance.
-- 🚀 **REST API**: Modular, testable endpoints for all CRUD operations.
-- 🧩 **Type-safe Backend**: Written in TypeScript for more reliable, maintainable code.
+- ✅ Work Order Management
+- 🔄 Per-Vehicle Service History
+- 📊 Pagination for Large Fleets
+- 🧾 PostgreSQL-Optimized Schema
+- 🚀 REST API with CRUD endpoints
+- 🧩 TypeScript Type Safety
 
 ---
 
-## 🚧 Usage Overview
+## 🚧 How It Works
 
-1. **Admin or Fleet Manager logs in**
-2. Views entire **vehicle list** with service details
-3. Can create new **work orders**
-4. Track and close work orders after completion
-5. View **paginated data** for large fleets
-6. Responsive UI for field and office staff
+1. Admin logs in to the dashboard
+2. Views **fleet inventory** and historical service logs
+3. Adds, updates, and closes **work orders**
+4. Manages service flow across departments using **pagination**
+5. Runs seamlessly in both office and mobile environments
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠️ End-User Installation Instructions
 
-### 1. Clone the repository
+### ✅ Prerequisites
+
+- Node.js (v18+)
+- PostgreSQL (local or cloud-hosted)
+- Git
+
+---
+
+### 🔽 Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/levelhlawrence/wdv349-o-PortfolioProject.git
-
 cd FleetCarePro
 ```
 
-### 2. Set up the server
+---
+
+### 🔧 Step 2: Install & Start the Backend
 
 ```bash
 cd server
@@ -71,56 +77,104 @@ npm install
 npm run dev
 ```
 
-### 3. Set up the frontend
+Ensure you have a `.env` file in `/server` with:
+
+```
+DATABASE_URL=postgresql://<username>:<password>@localhost:5432/fleetcarepro_new
+SECRET=your_jwt_secret
+```
+
+Run your PostgreSQL server and apply the schema.
+
+---
+
+### 💻 Step 3: Install & Start the Frontend
 
 ```bash
-cd client
+cd ../client
 npm install
 npm run dev
 ```
 
-## Environment Variables
+In `/client/.env`:
 
-In the **.env** file:
-
-```bash
-env
+```
 VITE_API_URL=http://localhost:3000/api_v1
-DATABASE_URL=postgresql://user:password@localhost:5432/fleetcarepro_new
+VITE_HOME_URL=your_main_url/client
 ```
 
-## API Structure
+Then visit: `http://localhost:5173` or `Your custom URL`
 
-Method Route Description
+---
 
-```javascript
-GET /vehicles Fetch paginated vehicle data
-POST /workorders Create a new work order
-PUT /workorders/:id Update or close a work order
-GET /vehicles/:id Get detailed vehicle info
-```
+## 📡 API Overview
+
+| Method | Route             | Description                     |
+| ------ | ----------------- | ------------------------------- |
+| GET    | `/vehicles`       | Fetch paginated vehicle data    |
+| GET    | `/vehicles/:id`   | Get detailed vehicle info       |
+| POST   | `/vehicles`       | Create a new vehicles           |
+| PUT    | `/vehicles/:id`   | Update a vehicle                |
+| DELETE | `/vehicles/:id`   | Delete a vehicle                |
+| GET    | `/workorders`     | Fetch or paginated workorders   |
+| PUT    | `/workorders/:id` | Update or close a work order    |
+| POST   | `/workorders`     | Create a new work order         |
+| DELETE | `/workorders/:id` | Delete a work order             |
+| POST   | `/register`       | Create user account             |
+| POST   | `/login`          | Login in with created account   |
+| POST   | `/logout`         | Logout with user account        |
+| GET    | `/check`          | Check user / Query user account |
+
+---
+
+## 🛟 Handoff & Support Plan
+
+### 🛠 What To Do If the App Goes Down
+
+If the application is not functioning:
+
+1. **Restart Services**
+
+   - Restart backend (`cd server && npm run dev`)
+   - Restart frontend (`cd client && npm run dev`)
+   - Restart PostgreSQL or verify connection string in `.env`
+
+2. **Check Logs**
+   Inspect error logs in terminal or browser console.
+
+3. **Verify API Health**
+   Test endpoints using [Postman](https://www.postman.com/) or `curl`.
+
+4. **Contact Developer**
+   If issues persist, contact the developer (see [Project Log](./docs/log.md)) for support or open an issue on the GitHub repository.
+
+5. **Backup Strategy**
+
+   - Use `pg_dump` to back up the database regularly
+   - Export CSV reports for offline access
+
+---
 
 ## 📈 Future Improvements
 
-- User authentication & roles (admin, technician)
+- Role-based login (Admin, Technician)
+- Email notifications for overdue service
+- Offline-first support for mobile devices
+- One-click PDF exports of work orders
 
-- Email alerts for overdue maintenance
+---
 
-- Mobile responsiveness for field use
+## 👥 Target Audience
 
-- PDF export of work orders
+- Local and state governments
+- Public transit authorities
+- School systems
+- Private fleets under 1,500 vehicles
 
-## 👨‍💼 Target Audience
+---
 
-- County governments
+## 👨‍💻 Author
 
-- City transit fleets
+Developed by **Level Lawrence**
 
-- School districts
-
-- Private companies with <1,500 vehicles
-
-`🧑‍💻 Author
-Developed by Level Lawrence`
-
-- ### Check out the [Log](./docs/log.md) for my info.
+- See [docs/log.md](./docs/log.md) for changelog and contributions.

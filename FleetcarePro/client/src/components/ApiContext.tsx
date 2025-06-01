@@ -9,7 +9,7 @@ type AllVehiclesData = {
   totalPages: number;
   totalItems: number;
   currentPage: number;
-  vehicles: Vehicle[]; // Define `Vehicle` if needed
+  vehicles: Vehicle[];
 };
 type Vehicle = {
   bus_no: string;
@@ -42,7 +42,10 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
       setVehicles(response.data);
       return;
     } catch (error) {
-      console.error("Error fetching vehicles:", error);
+      if (error.status === 401) {
+        navigate("/login");
+      }
+      console.warn("Error fetching vehicles:", error.message);
     }
   };
 
@@ -104,11 +107,9 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
   // @POST LOGOUT
   const logout = async () => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/logout`,
-        {},
-        { withCredentials: true }
-      );
+      await axios.post(`${import.meta.env.VITE_API_URL}/auth/logout`, null, {
+        withCredentials: true,
+      });
     } catch (error) {
       console.log(error.message);
     }

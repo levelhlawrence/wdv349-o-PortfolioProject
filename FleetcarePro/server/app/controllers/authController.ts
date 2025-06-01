@@ -2,9 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import User from "../models/user";
 
-// <---------- AUTH Controller -----------> //
-
-// @[Post] /api_v1/auth/register
+// @[POST] /api_v1/auth/register
 const registerUser = async (req: Request, res: Response) => {
   try {
     const hashed = await bcrypt.hash(req.body.password, 10);
@@ -21,25 +19,28 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-// @[Post] /api_v1/auth/login
+// @[POST] /api_v1/auth/login
 const loginUser = (_req: Request, res: Response) => {
   res.status(200).json({ message: "Logged in" });
 };
 
-// @[Post] /api_v1/auth/logout
-// controllers/authController.ts
-const logoutUser = async (req: Request, res: Response, next: NextFunction) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
+// @[POST] /api_v1/auth/logout
+const logoutUser = async (req: Request, res: Response) => {
+  req.logout(() => {
+    req.session.destroy(() => {
+      res.clearCookie("connect.sid", {
+        httpOnly: true,
+        sameSite: "none", // important for cross-origin
+        secure: process.env.NODE_ENV === "production", // only secure in production
+      });
+      res.status(200).json({ message: "Logged out" });
+    });
   });
 };
 
-// GET /api_v1/auth/check
+// @[GET] /api_v1/auth/check
 const authCheck = async (req: Request, res: Response) => {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated?.() && req.user) {
     return res.json({ isAuthenticated: true, user: req.user });
   }
   res.status(401).json({ isAuthenticated: false });
