@@ -1,13 +1,18 @@
-FROM node:23.3.0
+# server/Dockerfile
+FROM node:23
 
-WORKDIR /
+WORKDIR /app
 
-COPY . .
-
+# Install dependencies first
+COPY package*.json ./
 RUN npm install
 
-RUN npm run build
+# Copy source files
+COPY . .
+
+# Use ts-node-dev for live reload
+RUN npm install --save-dev ts-node-dev
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

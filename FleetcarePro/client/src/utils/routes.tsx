@@ -1,11 +1,7 @@
-import { IoMenuOutline } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
-import { IoHome } from "react-icons/io5";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaCreditCard } from "react-icons/fa";
-import { FaDisplay } from "react-icons/fa6";
-import { FaBus } from "react-icons/fa6";
-import { IoNewspaperOutline } from "react-icons/io5";
+import { IoHome, IoNewspaperOutline } from "react-icons/io5";
+import { FaRegCalendarAlt, FaCreditCard } from "react-icons/fa";
+import { FaDisplay, FaBus } from "react-icons/fa6";
+import { IoMdSettings } from "react-icons/io";
 
 export const navRoutes = [
   {
@@ -37,5 +33,10 @@ export const navRoutes = [
     name: "parts",
     icon: <FaCreditCard size={30} />,
     href: "/parts",
+  },
+  {
+    name: "settings",
+    icon: <IoMdSettings size={30} />,
+    href: "/settings",
   },
 ];

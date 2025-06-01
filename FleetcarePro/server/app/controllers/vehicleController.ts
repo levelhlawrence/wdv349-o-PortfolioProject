@@ -40,4 +40,49 @@ const getVehiclesById = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllVehicles, getVehiclesById };
+// @POST VEHICLE
+const createVehicle = async (req: Request, res: Response) => {
+  try {
+    const vehicle = await Vehicle.create(req.body);
+    res.status(201).json(vehicle);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+// @UPDATE VEHICLE
+const updateVehicleById = async (req: Request, res: Response) => {
+  try {
+    const bus_no = await req.params.id;
+    const vehiclePayload = req.body;
+    const updatedVehicle = await Vehicle.update(vehiclePayload, {
+      where: { bus_no: bus_no },
+    });
+
+    res.status(200).json(updatedVehicle);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+// @DELETE VEHICLE
+const deleteVehicle = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    await Vehicle.destroy({ where: { bus_no: id } });
+    res.status(204).json({ message: `Vehicle: ${id} deleted successfully` });
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+    console.log(error);
+  }
+};
+
+export {
+  getAllVehicles,
+  getVehiclesById,
+  createVehicle,
+  updateVehicleById,
+  deleteVehicle,
+};

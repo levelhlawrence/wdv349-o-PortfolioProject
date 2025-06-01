@@ -1,21 +1,16 @@
 import { IoIosSearch } from "react-icons/io";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useApi } from "../components/ApiContext";
+import { AddVehicle } from "../components/FleetComponents/AddVehicle";
 
 //  import components
 import DisplayVehicles from "../components/FleetComponents/DisplayVehicles";
 
 export default function Fleet() {
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [page, setPage] = useState(1 as number);
+  const [pageSize, setPageSize] = useState<Number>(10 as number);
   const vehFilterSelect = useRef<HTMLSelectElement>(null);
   const { vehicles, getAllVehicles } = useApi();
-
-  const testSelect = () => {
-    const select = document.getElementById("vehicles") as HTMLSelectElement;
-    const selectedValue = select.value;
-    console.log(selectedValue);
-  };
 
   // next page
   const nextPage = () => {
@@ -37,10 +32,10 @@ export default function Fleet() {
         id="fleet-headed"
         className="border-b-2 flex justify-between px-8 items-center py-4"
       >
-        <h1 className="text-xl font-semibold tracking-wide">Fleet Vehicles</h1>
-        <button className="bg-emerald-600 hover:bg-emerald-500 text-white p-2 rounded-md font-light text-sm">
-          Add Vehicle
-        </button>
+        <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
+          Fleet Vehicles
+        </h1>
+        <AddVehicle />
       </div>
       <form>
         <div className="px-6 flex items-center flex-row md:items-center gap-4 pt-12">
@@ -73,11 +68,10 @@ export default function Fleet() {
       {/* display output */}
       <aside id="veh-search-results" className="px-6 mt-8">
         <DisplayVehicles
-          vehFilterSelect={vehFilterSelect}
           nextPage={nextPage}
           prevPage={prevPage}
           page={page}
-          pageSize={pageSize}
+          pageSize={Number(pageSize)}
           setPageSize={setPageSize}
           vehicles={vehicles}
           getAllVehicles={getAllVehicles}

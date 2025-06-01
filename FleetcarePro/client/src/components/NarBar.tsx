@@ -1,5 +1,5 @@
 import fleetCareLogo from "../assets/maintLogo1.svg";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { navRoutes } from "../utils/routes";
 import { IoMenuOutline, IoClose } from "react-icons/io5";
 
@@ -17,7 +17,7 @@ export default function NarBar() {
   }, []);
 
   return (
-    <nav className="bg-gray-200 flex justify-between px-6 items-center py-4 md:absolute md:flex-col md:h-full md:w-64">
+    <nav className="bg-gray-200 flex justify-between px-6 items-center py-4 md:absolute md:flex-col md:h-full md:w-64 ">
       <div id="bus-logo" className="flex items-center ">
         <img className="invert w-10 mr-2" src={fleetCareLogo} alt="bus icon" />
         <h1 className="text-2xl">
