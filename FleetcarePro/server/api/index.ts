@@ -16,6 +16,12 @@ import { workOrderRouter } from "../app/routes/workorderRoutes";
 const app: express.Express = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 
+// <---------- Database Connection -----------> //
+
+sequelize.sync({ force: false }).then(() => {
+  console.log("Database connected");
+});
+
 // <---------- Middleware -----------> //
 const allowedOrigins = [
   "https://fleetcare-frontend.onrender.com",
@@ -45,19 +51,12 @@ app.use(
     },
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(passport.initialize());
+app.use(passport.session());
 
 configurePassport(passport);
-
-// <---------- Database Connection -----------> //
-
-sequelize.sync({ force: false }).then(() => {
-  console.log("Database connected");
-});
 
 // <---------- API Routes -----------> //
 app.use("/api_v1/workorders", isAuthenticated, workOrderRouter);

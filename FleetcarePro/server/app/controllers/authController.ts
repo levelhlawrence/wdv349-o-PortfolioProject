@@ -25,17 +25,14 @@ const loginUser = (_req: Request, res: Response) => {
 };
 
 // @[POST] /api_v1/auth/logout
-const logoutUser = async (req: Request, res: Response) => {
-  req.logout(() => {
-    req.session.destroy(() => {
-      res.clearCookie("connect.sid", {
-        httpOnly: true,
-        sameSite: "none", // important for cross-origin
-        secure: process.env.NODE_ENV === "production", // only secure in production
-      });
-      res.status(200).json({ message: "Logged out" });
-    });
+const logoutUser = (req: Request, res: Response, next: NextFunction) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
   });
+  console.log("logged out");
 };
 
 // @[GET] /api_v1/auth/check
