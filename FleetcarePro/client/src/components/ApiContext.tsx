@@ -40,11 +40,9 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
         { withCredentials: true }
       );
       setVehicles(response.data);
+      console.log(vehicles);
       return;
     } catch (error) {
-      if (error.status === 401) {
-        navigate("/login");
-      }
       console.warn("Error fetching vehicles:", error.message);
     }
   };
@@ -56,7 +54,7 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
         `${import.meta.env.VITE_API_URL}/vehicles/${id}`,
         { withCredentials: true }
       );
-      const data = await response.data;
+      const data = response.data;
       setVehicleDetails(data);
     } catch (error) {
       console.error("Error fetching vehicle:", error);

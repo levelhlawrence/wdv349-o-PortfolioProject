@@ -23,6 +23,8 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 // <---------- Middleware -----------> //
+configurePassport(passport);
+
 const allowedOrigins = [
   "https://fleetcare-frontend.onrender.com",
   "http://localhost:5173",
@@ -31,32 +33,33 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
+
+app.set("trust proxy", 1);
 
 app.use(express.json());
 app.use(
   session({
     name: "connect.sid",
-    secret: process.env.SECRET as string,
+    secret: process.env.SECRET!,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
-      maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000,
     },
   })
 );
+
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(passport.initialize());
 app.use(passport.session());
-
-configurePassport(passport);
 
 // <---------- API Routes -----------> //
 app.use("/api_v1/workorders", isAuthenticated, workOrderRouter);

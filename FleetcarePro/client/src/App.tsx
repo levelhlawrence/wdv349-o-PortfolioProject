@@ -26,26 +26,25 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const restoreSession = async () => {
-      try {
-        const res = await axios.get(
-          `${import.meta.env.ITE_API_URL}/auth/check`,
-          {
-            withCredentials: true,
-          }
-        );
-        setUser(res.data.user);
-        setIsLoggedIn(true);
-        console.log(user);
-      } catch {
-        setIsLoggedIn(false);
-      }
-    };
-
-    restoreSession();
+    // const restoreSession = async () => {
+    //   try {
+    //     const res = await axios.get(
+    //       `${import.meta.env.ITE_API_URL}/auth/check`,
+    //       {
+    //         withCredentials: true,
+    //       }
+    //     );
+    //     setUser(res.data.user);
+    //     setIsLoggedIn(true);
+    //     console.log(user);
+    //   } catch {
+    //     setIsLoggedIn(false);
+    //   }
+    // };
+    // restoreSession();
   }, []);
 
-  if (isLoggedIn === null) return <p>Loading...</p>;
+  // if (isLoggedIn === null) return <p>Loading...</p>;
 
   return (
     <ApiProvider>

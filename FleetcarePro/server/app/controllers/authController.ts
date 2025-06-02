@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import User from "../models/user";
+import passport from "passport";
 
 // @[POST] /api_v1/auth/register
 const registerUser = async (req: Request, res: Response) => {
@@ -20,8 +21,19 @@ const registerUser = async (req: Request, res: Response) => {
 };
 
 // @[POST] /api_v1/auth/login
-const loginUser = (_req: Request, res: Response) => {
-  res.status(200).json({ message: "Logged in" });
+const loginUser = (req: Request, res: Response, next: NextFunction) => {
+  passport.authenticate("local", (err: any, user: any, info: any) => {
+    if (err) return next(err);
+    if (!user)
+      return res.status(401).json({ message: info?.message || "Login failed" });
+
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+
+      const { password, ...userData } = user.toJSON();
+      return res.status(200).json({ user: userData });
+    });
+  })(req, res, next);
 };
 
 // @[POST] /api_v1/auth/logout
@@ -30,7 +42,7 @@ const logoutUser = (req: Request, res: Response, next: NextFunction) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.redirect(process.env.VITE_HOME_URL as string);
   });
   console.log("logged out");
 };
